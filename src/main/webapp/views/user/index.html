@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+>
+<head>
+    <meta charset="UTF-8">
+    <title>user/index</title>
+</head>
+<body>
+
+<!--kiểm tra xem có userLogin trong session hay không, và nếu có thì lấy fullName, nếu không thì để trống.-->
+<h1 th:text="'Chào mừng bạn ' + (${sessionScope.containsKey('userLogin')} ? ${sessionScope.get('userLogin').fullName} : '') + ' đến với trang người dùng'"></h1>
+</body>
+</html>
