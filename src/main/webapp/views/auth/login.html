@@ -2,20 +2,19 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <title>Login</title>
-    <th:block th:replace="../layout/head :: head"/>
 </head>
 <body>
 <div class="container m-5 p-2" style="max-width: 60%">
     <h2>Login</h2>
 <!--    <form th:action="@{/login}" method="post">-->
-    <form th:action="@{/login}" th:object="${formLogin}" method="post">
+    <form th:action="@{/login}" method="post" >
     <div class="mb-3">
             <label for="username" class="form-label">Username</label>
-            <input type="text" class="form-control" name="username" id="username" th:field="*{username}" required>
+            <input type="text" class="form-control" name="username" id="username" th:value="${request.username}" required>
         </div>
         <div class="mb-3">
             <label for="password" class="form-label">Password</label>
-            <input type="password" class="form-control" name="password" id="password" th:field="*{password}" required>
+            <input type="password" class="form-control" name="password" id="password" th:value="${request.password}" required>
         </div>
         <button type="submit" class="btn btn-primary">Login</button>
     </form>
@@ -23,6 +22,5 @@
     <div th:if="${error}" class="alert alert-danger" th:text="${error}"></div>
 </div>
 
-<th:block th:replace="../layout/foot :: foot"/>
 </body>
 </html>

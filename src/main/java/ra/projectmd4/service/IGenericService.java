@@ -1,4 +1,5 @@
 package ra.projectmd4.service;
 
-public interface IGenericService {
+public interface IGenericService <T,E>{
+
 }

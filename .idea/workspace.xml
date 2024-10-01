@@ -5,41 +5,46 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="3f5f54fa-e215-493d-8e53-dcf9b9ac0802" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/gradle/wrapper/gradle-wrapper.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/gradle/wrapper/gradle-wrapper.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/gradlew" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/gradlew.bat" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/settings.gradle" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ra/projectmd4/config/AuthInterceptor.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ra/projectmd4/config/DispatcherConfig.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ra/projectmd4/config/HibernateConfig.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ra/projectmd4/config/MVCConfig.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ra/projectmd4/controller/AuthController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ra/projectmd4/controller/HomeController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ra/projectmd4/dao/IGenericDao.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ra/projectmd4/dao/IUserDao.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ra/projectmd4/dao/UserDaoImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ra/projectmd4/exception/AuthenticationException.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ra/projectmd4/model/dto/request/FormLogin.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ra/projectmd4/model/dto/request/FormRegister.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ra/projectmd4/model/dto/response/UserInfo.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ra/projectmd4/model/entity/Category.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ra/projectmd4/model/entity/Product.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ra/projectmd4/model/entity/User.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ra/projectmd4/service/IGenericService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ra/projectmd4/service/user/IUserService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ra/projectmd4/service/user/UserServiceImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/web.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/views/admin/index.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/views/auth/login.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/views/auth/register.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/views/user/index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/ra/projectmd4/controller/admin/UserController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/ra/projectmd4/dao/user/IUserDao.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/ra/projectmd4/dao/user/UserDaoImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/ra/projectmd4/model/dto/response/UserResponse.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/static/css/app.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/static/css/app.css.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/static/img/avatars/avatar-2.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/static/img/avatars/avatar-3.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/static/img/avatars/avatar-4.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/static/img/avatars/avatar-5.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/static/img/avatars/avatar.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/static/img/icons/icon-48x48.png.url" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/static/img/photos/unsplash-1.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/static/img/photos/unsplash-2.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/static/img/photos/unsplash-3.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/static/js/app.js.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/static/js/app.js.url" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/static/js/login.js.url" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/views/admin/category/add-category.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/views/admin/category/edit-category.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/views/admin/category/list-category.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/views/admin/product/add-product.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/views/admin/product/edit-product.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/views/admin/product/list-product.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/views/admin/user.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ra/projectmd4/config/MVCConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ra/projectmd4/config/MVCConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ra/projectmd4/controller/AuthController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ra/projectmd4/controller/AuthController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ra/projectmd4/controller/HomeController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ra/projectmd4/controller/HomeController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ra/projectmd4/dao/IUserDao.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ra/projectmd4/dao/UserDaoImpl.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ra/projectmd4/service/IGenericService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ra/projectmd4/service/IGenericService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ra/projectmd4/service/user/IUserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ra/projectmd4/service/user/IUserService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ra/projectmd4/service/user/UserServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ra/projectmd4/service/user/UserServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/views/admin/index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/views/auth/login.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/views/auth/login.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/views/auth/register.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/views/auth/register.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/views/user/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/views/user/index.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -72,14 +77,26 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Interface" />
-        <option value="Class" />
         <option value="HTML File" />
+        <option value="Class" />
       </list>
     </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;NgMyTran&quot;
+  }
+}</component>
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/NgMyTran/PROJECT_MD4.git&quot;,
+    &quot;accountId&quot;: &quot;fe54fcae-e653-435b-a501-830912eed06e&quot;
+  }
+}</component>
   <component name="LogFilters">
     <option name="FILTER_ERRORS" value="false" />
     <option name="FILTER_WARNINGS" value="false" />
@@ -96,32 +113,37 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "DefaultHtmlFileTemplate": "HTML File",
-    "Gradle.Build projectMd4.executor": "Run",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "Tomcat Server.Tomcat 9.0.937.executor": "Run",
-    "git-widget-placeholder": "master",
-    "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "C:/Users/TRAN/INTELLIJ/HCM-JV230304-Demo-Project04",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "preferences.lookFeel",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;DefaultHtmlFileTemplate&quot;: &quot;HTML File&quot;,
+    &quot;Gradle.Build projectMd4.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.projectMd4 [:Test.main()].executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;Tomcat Server.Tomcat 9.0.937.executor&quot;: &quot;Run&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/TRAN/INTELLIJ/HCM-JV230304-Demo-Project04&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.lookFeel&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   },
-  "keyToStringList": {
-    "DatabaseDriversLRU": [
-      "mysql"
+  &quot;keyToStringList&quot;: {
+    &quot;DatabaseDriversLRU&quot;: [
+      &quot;mysql&quot;
     ]
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\Users\TRAN\INTELLIJ\projectMd4\src\main\java\ra\projectmd4\model\entity" />
+      <recent name="C:\Users\TRAN\INTELLIJ\projectMd4\src\main\webapp\static\css" />
+      <recent name="C:\Users\TRAN\INTELLIJ\projectMd4\src\main\webapp\static\js" />
+      <recent name="C:\Users\TRAN\INTELLIJ\projectMd4\src\main\webapp\static\img\photos" />
+      <recent name="C:\Users\TRAN\INTELLIJ\projectMd4\src\main\webapp\static\img\icons" />
+      <recent name="C:\Users\TRAN\INTELLIJ\projectMd4\src\main\webapp\static\img\avatars" />
     </key>
   </component>
   <component name="RunManager">
@@ -234,7 +256,9 @@
       <workItem from="1727400854498" duration="22624000" />
       <workItem from="1727533357118" duration="9655000" />
       <workItem from="1727576697142" duration="3968000" />
-      <workItem from="1727612168583" duration="5767000" />
+      <workItem from="1727612168583" duration="11487000" />
+      <workItem from="1727658270427" duration="33377000" />
+      <workItem from="1727746091772" duration="19408000" />
     </task>
     <servers />
   </component>

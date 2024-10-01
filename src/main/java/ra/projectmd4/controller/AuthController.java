@@ -19,51 +19,53 @@ public class AuthController {
     @Autowired
     private IUserService userService;
 
-//    @GetMapping("/login")
-//    public String login(){
-//        return "auth/login";
-//    }
-@GetMapping("/login")
-public String login(Model model){
-    model.addAttribute("formLogin", new FormLogin());
-    return "auth/login";
-}
-
-    @GetMapping("/register")
-    public String register(Model model){
-        model.addAttribute("formRegister", new FormRegister());
+    @GetMapping("/login")
+    public String login(Model model){
+        model.addAttribute("request", new FormLogin());
         return "auth/login";
     }
-//    @GetMapping("/register")
-//    public String register(){
-//        return "auth/register";
-//    }
+    @GetMapping("/register")
+    public String register(){
+        return "auth/register";
+    }
+
+@GetMapping("/logout")
+public String logout(HttpSession session){
+        session.invalidate();
+        return "redirect:/";
+}
 
     @PostMapping("/register")
-    public String handleRegister(@ModelAttribute FormRegister request){
-        try{
+    public String handleRegister(@ModelAttribute FormRegister request) {
+        try {
             userService.register(request);
-            return "auth/login";
-        }catch (Exception e) {
-            return "redirect:/error?message="+e.getMessage();
+            return "auth/login"; // Redirect to login after successful registration
+        } catch (Exception e) {
+            return "auth/register"; // Return to the registration page with an error
         }
     }
-
 
     @PostMapping("/login")
-    public String handleLogin(@ModelAttribute FormLogin request, HttpSession session, Model model){
-        try{
+    public String handleLogin(@ModelAttribute FormLogin request, HttpSession session, Model model) {
+        try {
             UserInfo userInfo = userService.login(request);
-            session.setAttribute("userLogin",userInfo);
-            if (userInfo.isRole()){
-                // trang admin
-                return "redirect:/admin";
-            }else {
-                return "redirect:/";
+            session.setAttribute("userLogin", userInfo);
+
+            if (!userInfo.isStatus()) { // Check if the user is blocked
+                model.addAttribute("error", "Tài khoản của bạn đã bị khóa. Vui lòng liên hệ hỗ trợ.");
+                return "auth/login";
             }
-        }catch (AuthenticationException e){
-            model.addAttribute("error",e.getMessage());
-            return "auth/login";
+
+            if (userInfo.isRole()) {
+                return "redirect:/admin"; // Redirect to admin if the user is an admin
+            } else {
+                return "redirect:/"; // Redirect to the home page if the user is a regular user
+            }
+        } catch (AuthenticationException e) {
+            model.addAttribute("error", e.getMessage());
+            model.addAttribute("request", request);
+            return "auth/login"; // Return to the login page with an error
         }
     }
+
 }

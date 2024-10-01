@@ -1,45 +1,86 @@
+<!--<!DOCTYPE html>-->
+<!--<html lang="en" xmlns:th="http://www.thymeleaf.org">-->
+<!--<head>-->
+<!--    <title>Register</title>-->
+<!--</head>-->
+<!--<body>-->
+<!--<div class="container m-5 p-2" style="max-width: 60%">-->
+<!--    <h2>Đăng ký</h2>-->
+<!--    <form th:action="@{/register}" th:object="${formRegister}" method="post">-->
+<!--            <div class="mb-3">-->
+<!--                <label for="username" class="form-label">Username</label>-->
+<!--                <input type="text" class="form-control" id="username" th:field="*{username}" required>-->
+<!--            </div>-->
+<!--            <div class="mb-3">-->
+<!--                <label for="password" class="form-label">Password</label>-->
+<!--                <input type="password" class="form-control" id="password" th:field="*{password}" required>-->
+<!--            </div>-->
+<!--            <div class="mb-3">-->
+<!--                <label for="confirmPassword" class="form-label">Confirm Password</label>-->
+<!--                <input type="password" class="form-control" id="confirmPassword" th:field="*{confirmPassword}" required>-->
+<!--            </div>-->
+<!--            <div class="mb-3">-->
+<!--                <label for="email" class="form-label">Email address</label>-->
+<!--                <input type="email" class="form-control" id="email" th:field="*{email}" required>-->
+<!--            </div>-->
+<!--            <div class="mb-3">-->
+<!--                <label for="fullname" class="form-label">Fullname</label>-->
+<!--                <input type="text" class="form-control" id="fullname" th:field="*{fullName}" required>-->
+<!--            </div>-->
+<!--            <div class="mb-3">-->
+<!--                <label for="phone" class="form-label">Phone</label>-->
+<!--                <input type="text" class="form-control" id="phone" th:field="*{phone}" required>-->
+<!--            </div>-->
+<!--            <div class="mb-3">-->
+<!--                <label for="address" class="form-label">Address</label>-->
+<!--                <input type="text" class="form-control" id="address" th:field="*{address}" required>-->
+<!--            </div>-->
+<!--            <button type="submit" class="btn btn-primary">Register</button>-->
+<!--    </form>-->
+<!--</div>-->
+
+<!--</body>-->
+<!--</html>-->
+
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <title>Register</title>
-    <th:block th:replace="../layout/head :: head"/>
 </head>
 <body>
 <div class="container m-5 p-2" style="max-width: 60%">
     <h2>Đăng ký</h2>
-    <form th:action="@{/register}" th:object="${formRegister}" method="post">
+    <form th:action="@{/register}" method="post">
         <div class="mb-3">
             <label for="username" class="form-label">Username</label>
-            <input type="text" class="form-control" id="username" th:field="*{username}" required>
+            <input type="text" class="form-control" id="username" name="username" required>
         </div>
         <div class="mb-3">
             <label for="password" class="form-label">Password</label>
-            <input type="password" class="form-control" id="password" th:field="*{password}" required>
+            <input type="password" class="form-control" id="password" name="password" required>
         </div>
         <div class="mb-3">
             <label for="confirmPassword" class="form-label">Confirm Password</label>
-            <input type="password" class="form-control" id="confirmPassword" th:field="*{confirmPassword}" required>
+            <input type="password" class="form-control" id="confirmPassword" name="confirmPassword" required>
         </div>
         <div class="mb-3">
             <label for="email" class="form-label">Email address</label>
-            <input type="email" class="form-control" id="email" th:field="*{email}" required>
+            <input type="email" class="form-control" id="email" name="email" required>
         </div>
         <div class="mb-3">
             <label for="fullname" class="form-label">Fullname</label>
-            <input type="text" class="form-control" id="fullname" th:field="*{fullName}" required>
+            <input type="text" class="form-control" id="fullname" name="fullName" required>
         </div>
         <div class="mb-3">
             <label for="phone" class="form-label">Phone</label>
-            <input type="text" class="form-control" id="phone" th:field="*{phone}" required>
+            <input type="text" class="form-control" id="phone" name="phone" required>
         </div>
         <div class="mb-3">
             <label for="address" class="form-label">Address</label>
-            <input type="text" class="form-control" id="address" th:field="*{address}" required>
+            <input type="text" class="form-control" id="address" name="address" required>
         </div>
         <button type="submit" class="btn btn-primary">Register</button>
     </form>
 </div>
-
-<th:block th:replace="../layout/foot :: foot"/>
 </body>
 </html>

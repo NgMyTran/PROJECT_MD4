@@ -1,13 +1,16 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org"
->
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>user/index</title>
 </head>
 <body>
+<h2><a href="/register">Register</a></h2>
+<h2><a href="/login">Login</a></h2>
+<h2><a href="/logout">Logout</a></h2>
 
-<!--kiểm tra xem có userLogin trong session hay không, và nếu có thì lấy fullName, nếu không thì để trống.-->
-<h1 th:text="'Chào mừng bạn ' + (${sessionScope.containsKey('userLogin')} ? ${sessionScope.get('userLogin').fullName} : '') + ' đến với trang người dùng'"></h1>
+<!-- Kiểm tra xem có userLogin trong session hay không, và nếu có thì lấy fullName, nếu không thì để trống. -->
+<h1 th:text="|Chào mừng ${#ctx.session.userLogin != null ? #ctx.session.userLogin.fullName : ''} đến với trang người dùng|"></h1>
+
 </body>
 </html>
