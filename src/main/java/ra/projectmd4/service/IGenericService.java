@@ -1,5 +1,10 @@
 package ra.projectmd4.service;
 
-public interface IGenericService <T,E>{
+import java.util.List;
 
+public interface IGenericService <T,E>{
+    public List<T> findAll();
+    public T findById(E id);
+    public void save(T t);
+    public void delete(E id);
 }

@@ -6,6 +6,28 @@
     <title>Title</title>
 </head>
 <body>
-
+<h1>Update Category</h1>
+<form th:action="@{/admin/category/update(id=${category.id})}" method="post">
+    <div>
+        <label for="id">Id</label>
+        <input type="text" th:value="${category.id}" name="id" id="id" readonly>
+    </div>
+    <div>
+        <label for="name">Category's name</label>
+        <input type="text" th:value="${category.name}" name="name" id="name">
+    </div>
+    <div>
+        <label>Status:</label>
+        <div>
+            <input type="radio" name="status" id="active" value="true" th:checked="${category.status}"/>
+            <label for="active">Active</label>
+        </div>
+        <div>
+            <input type="radio" name="status" id="inactive" value="false" th:checked="${!category.status}"/>
+            <label for="inactive">Inactive</label>
+        </div>
+    </div>
+    <input type="submit" value="UPDATE">
+</form>
 </body>
 </html>

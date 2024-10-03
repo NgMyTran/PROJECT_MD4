@@ -48,4 +48,15 @@ public class Product {
 
     @Column(name = "updated_at", columnDefinition = "date")
     private LocalDate updatedAt;
+//
+//    @PrePersist
+//    protected void onCreate() {
+//        createdAt = LocalDate.now();
+//        updatedAt = LocalDate.now();
+//    }
+//
+//    @PreUpdate
+//    protected void onUpdate() {
+//        updatedAt = LocalDate.now();
+//    }
 }

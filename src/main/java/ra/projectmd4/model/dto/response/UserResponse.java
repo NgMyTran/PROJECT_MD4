@@ -11,6 +11,7 @@ import java.util.Date;
 @NoArgsConstructor
 @AllArgsConstructor
 @Data
+//luu thong tin ng dung vua trong list cua admin (k lay password)
 public class UserResponse {
     private Long userId;
     private String username;

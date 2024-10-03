@@ -8,6 +8,7 @@ import ra.projectmd4.model.entity.User;
 @NoArgsConstructor
 @AllArgsConstructor
 @Data
+//luu thong tin ng dung dang dang nhap trong session_chu yeu de xet role
 public class UserInfo {
     private Long userId;
     private String fullName;

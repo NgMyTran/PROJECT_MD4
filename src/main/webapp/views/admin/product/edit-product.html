@@ -6,6 +6,43 @@
     <title>Title</title>
 </head>
 <body>
-
+<h1>Edit Product</h1>
+<form th:action="@{/admin/product/update}" method="post" enctype="multipart/form-data">
+    <input type="hidden" name="id" th:value="${product.id}" readonly/>
+    <div>
+        <label for="sku">Product Sku:</label>
+        <input type="text" name="sku" id="sku" th:value="${product.sku}" required>
+    </div>
+    <div>
+        <label for="name">Product Name:</label>
+        <input type="text" name="productName" id="name" th:value="${product.productName}" required>
+    </div>
+    <div>
+        <label for="price">Price:</label>
+        <input type="number" name="price" id="price" th:value="${product.price}" required>
+    </div>
+    <div>
+        <label for="stock">Stock:</label>
+        <input type="number" name="stock" id="stock" th:value="${product.stock}" required>
+    </div>
+    <div>
+        <label for="image">Image:</label>
+        <input type="file" name="imageFile" id="image" required>
+    </div>
+    <div>
+        <label for="description">Description:</label>
+        <input type="text" name="description" id="description" th:value="${product.description}" required>
+    </div>
+    <div>
+        <label for="category">Category:</label>
+        <select name="categoryId" id="category" required>
+            <option th:each="category : ${categoryList}"
+                    th:value="${category.id}"
+                    th:text="${category.name}"
+                    th:selected="${category.id == product.category.id}"></option>
+        </select>
+    </div>
+    <input type="submit" value="Update Product">
+</form>
 </body>
 </html>
