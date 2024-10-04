@@ -7,6 +7,10 @@
 </head>
 <body>
 <h1>Edit Product</h1>
+<div th:if="${message}" class="alert alert-info" th:text="${message}"></div>
+<div th:if="${errorMessage}" style="color: red;">
+    <p th:text="${errorMessage}"></p>
+</div>
 <form th:action="@{/admin/product/update}" method="post" enctype="multipart/form-data">
     <input type="hidden" name="id" th:value="${product.id}" readonly/>
     <div>
@@ -25,9 +29,14 @@
         <label for="stock">Stock:</label>
         <input type="number" name="stock" id="stock" th:value="${product.stock}" required>
     </div>
+<!--    <div>-->
+<!--        <label for="image">Image:</label>-->
+<!--        <input type="file" name="imageFile" id="image" required>-->
+<!--    </div>-->
     <div>
         <label for="image">Image:</label>
-        <input type="file" name="imageFile" id="image" required>
+        <input type="file" name="imageFile" id="image">
+        <p>Keep current image: <input type="checkbox" name="keepCurrentImage" value="true"></p>
     </div>
     <div>
         <label for="description">Description:</label>

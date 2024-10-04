@@ -43,4 +43,19 @@ public class ShoppingCartServiceImpl implements IShoppingCartService {
     public BigDecimal calculateTotalAmount(List<ShoppingCart> shoppingCarts) {
         return shoppingCartDao.calculateTotalAmount(shoppingCarts);
     }
+
+    @Override
+    public List<ShoppingCart> findByUserId(Long userId) {
+        return shoppingCartDao.findByUserId(userId);
+    }
+
+    @Override
+    public ShoppingCart findByUserIdAndProductId(Long userId, Long productId) {
+        return shoppingCartDao.findByUserIdAndProductId(userId, productId);
+    }
+
+    @Override
+    public List<ShoppingCart> findByIds(List<Integer> ids) {
+        return shoppingCartDao.findByIds(ids);
+    }
 }

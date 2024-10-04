@@ -30,4 +30,7 @@ public class ShoppingCart {
     @Column(name = "order_quantity", nullable = false)
     private Integer orderQuantity;
 
+    @ManyToOne
+    @JoinColumn(name = "product_id", referencedColumnName = "product_id", insertable = false, updatable = false)
+    private Product product; // tham chiếu đến đối tượng Product
 }

@@ -8,5 +8,7 @@ import java.util.List;
 
 public interface IShoppingCartService extends IGenericService<ShoppingCart, Integer> {
     BigDecimal calculateTotalAmount(List<ShoppingCart> shoppingCarts);
-
+    List<ShoppingCart> findByUserId(Long userId);
+    ShoppingCart findByUserIdAndProductId(Long userId, Long productId);
+    public List<ShoppingCart> findByIds(List<Integer> ids);
 }

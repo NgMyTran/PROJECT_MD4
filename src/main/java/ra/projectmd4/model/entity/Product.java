@@ -7,7 +7,10 @@ import lombok.Setter;
 
 import javax.persistence.*;
 import java.math.BigDecimal;
+import java.sql.Date;
+import java.sql.Timestamp;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 @AllArgsConstructor
 @NoArgsConstructor
@@ -43,20 +46,21 @@ public class Product {
     @JoinColumn(name = "category_id")
     private Category category;
 
-    @Column(name = "created_at", columnDefinition = "date")
-    private LocalDate createdAt;
+//    @Column(name = "created_at", columnDefinition = "date")
+//    private Date createdAt;
+//
+//    @Column(name = "updated_at", columnDefinition = "date")
+//    private Date updatedAt;
 
-    @Column(name = "updated_at", columnDefinition = "date")
-    private LocalDate updatedAt;
-//
-//    @PrePersist
-//    protected void onCreate() {
-//        createdAt = LocalDate.now();
-//        updatedAt = LocalDate.now();
-//    }
-//
-//    @PreUpdate
-//    protected void onUpdate() {
-//        updatedAt = LocalDate.now();
-//    }
+    @Column(name = "created_at", columnDefinition = "timestamp")
+    private Timestamp createdAt;
+
+    @Column(name = "updated_at", columnDefinition = "timestamp")
+    private Timestamp updatedAt;
+
+    public void update() {
+//        this.updatedAt = Date.valueOf(LocalDate.now());
+        this.updatedAt = Timestamp.valueOf(LocalDateTime.now());
+    }
+
 }

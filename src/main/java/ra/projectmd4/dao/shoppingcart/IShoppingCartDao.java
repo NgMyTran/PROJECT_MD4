@@ -8,4 +8,8 @@ import java.util.List;
 
 public interface IShoppingCartDao extends IGenericDao<ShoppingCart, Integer> {
     BigDecimal calculateTotalAmount(List<ShoppingCart> shoppingCarts);
+    List<ShoppingCart> findByUserId(Long userLoginId);
+    ShoppingCart findByUserIdAndProductId(Long userId, Long productId);
+    List<ShoppingCart> findByIds(List<Integer> ids);
+
 }

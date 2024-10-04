@@ -12,6 +12,8 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.TypedQuery;
 import java.math.BigDecimal;
+import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 
 
@@ -65,5 +67,38 @@ public class ShoppingCartDaoImpl implements IShoppingCartDao {
         return totalAmount;
     }
 
+    @Override
+    public List<ShoppingCart> findByUserId(Long userId) {
+        TypedQuery<ShoppingCart> query = entityManager.createQuery("SELECT sc FROM ShoppingCart sc WHERE sc.userId = :userId", ShoppingCart.class);
+        query.setParameter("userId", userId);
+        return query.getResultList();
+    }
+
+    @Override
+    public ShoppingCart findByUserIdAndProductId(Long userId, Long productId) {
+        TypedQuery<ShoppingCart> query = entityManager.createQuery(
+                "SELECT sc FROM ShoppingCart sc WHERE sc.userId = :userId AND sc.productId = :productId",
+                ShoppingCart.class);
+
+        query.setParameter("userId", userId);
+        query.setParameter("productId", productId);
+
+        // Chỉ lấy một kết quả đầu tiên, nếu không tìm thấy sẽ trả về null
+        List<ShoppingCart> results = query.getResultList();
+        return results.isEmpty() ? null : results.get(0);
+    }
+
+    @Override
+    public List<ShoppingCart> findByIds(List<Integer> ids) {
+        if (ids == null || ids.isEmpty()) { // Sử dụng isEmpty() để kiểm tra danh sách
+            return Collections.emptyList(); // Trả về danh sách rỗng nếu không có sản phẩm nào
+        }
+        // Câu truy vấn JPQL
+        String jpql = "SELECT sc FROM ShoppingCart sc WHERE sc.id IN :ids";
+        return entityManager.createQuery(jpql, ShoppingCart.class)
+                .setParameter("ids", ids) // Không cần chuyển đổi lại thành danh sách
+                .getResultList();
+    }
 
 }
+
