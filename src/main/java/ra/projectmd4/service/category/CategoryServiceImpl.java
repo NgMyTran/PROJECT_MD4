@@ -1,5 +1,7 @@
 package ra.projectmd4.service.category;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import ra.projectmd4.dao.category.ICategoryDao;
@@ -7,12 +9,19 @@ import ra.projectmd4.dao.product.IProductDao;
 import ra.projectmd4.model.entity.Category;
 import ra.projectmd4.model.entity.Product;
 
+import javax.persistence.EntityManager;
+import javax.persistence.EntityNotFoundException;
+import javax.persistence.PersistenceContext;
 import javax.transaction.Transactional;
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
 @Service
 public class CategoryServiceImpl implements ICategoryService {
+    private static final Logger logger = LoggerFactory.getLogger(CategoryServiceImpl.class);
+    @PersistenceContext
+    private EntityManager entityManager;
    @Autowired
    private ICategoryDao categoryDao;
    @Autowired
@@ -52,14 +61,20 @@ public class CategoryServiceImpl implements ICategoryService {
     @Override
     @Transactional
     public void deleteCategoryConfirm(Long id, boolean confirm) {
-        Category categoryDel = categoryDao.findById(id);
-        if(categoryDel != null) {
-            if(!categoryDel.getProducts().isEmpty() && confirm) {
-                for(Product pro : categoryDel.getProducts()) {
-                    productDao.delete(pro.getId());
+        Category cateDel = categoryDao.findById(id);
+        if (cateDel != null) {
+            //có sp thuộc category
+            if (!cateDel.getProducts().isEmpty() && confirm) {
+                for (Product pro : cateDel.getProducts()) {
+                    productDao.delete(pro.getId()); // Cập nhật sản phẩm
                 }
             }
             categoryDao.delete(id);
         }
+    }
+
+    @Override
+    public List<Category> getListCategories(String key) {
+        return categoryDao.getListCategories(key);
     }
 }

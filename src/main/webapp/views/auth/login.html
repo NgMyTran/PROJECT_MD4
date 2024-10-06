@@ -2,25 +2,99 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <title>Login</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background: url('/img/photos/green-spa-setting-wellness-background-260nw-1381009220.png') no-repeat center center fixed; /* Đặt ảnh nền */
+            background-size: cover;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin-left: 26pc;
+        }
+
+        .container {
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            max-width: 400px;
+            width: 100%;
+        }
+
+        h2 {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .form-group {
+            position: relative;
+            margin-bottom: 20px;
+        }
+
+        .form-label {
+            position: absolute;
+            top: 12px;
+            left: 12px;
+            transition: 0.2s ease all;
+            color: #aaa;
+            pointer-events: none;
+        }
+
+        .form-control {
+            width: 93%;
+            padding: 10px 12px;
+            border-radius: 0.25rem;
+            border: 2px solid #46a442;
+            font-size: 16px;
+            margin-bottom: 40px;
+        }
+
+        .form-control:focus + .form-label,
+        .form-control:not(:placeholder-shown) + .form-label {
+            top: -21px; /* Di chuyển label lên trên */
+            left: 12px;
+            font-size: 18px; /* Kích thước font của label */
+            color: green; /* Màu label khi focus */
+        }
+
+        .btn-primary {
+            background-color: green;
+            border: none;
+            color: white;
+            padding: 0.5em 1em;
+            text-transform: none;
+            border-radius: 0.25rem;
+            cursor: pointer;
+            width: 50%;
+            height: 3pc;
+            margin-left: 6pc;
+        }
+
+        .alert-danger {
+            color: #721c24;
+            background-color: #f8d7da;
+            border-color: #f5c6cb;
+            margin-top: 1rem;
+        }
+    </style>
 </head>
 <body>
-<div class="container m-5 p-2" style="max-width: 60%">
-    <h2>Login</h2>
-<!--    <form th:action="@{/login}" method="post">-->
-    <form th:action="@{/login}" method="post" >
-    <div class="mb-3">
+<div class="container p-2">
+    <h2>Sign in</h2>
+    <form th:action="@{/login}" method="post">
+        <div class="form-group">
+            <input type="text" class="form-control" name="username" id="username" placeholder=" " required>
             <label for="username" class="form-label">Username</label>
-            <input type="text" class="form-control" name="username" id="username" th:value="${request.username}" required>
         </div>
-        <div class="mb-3">
+        <div class="form-group">
+            <input type="password" class="form-control" name="password" id="password" placeholder=" " required>
             <label for="password" class="form-label">Password</label>
-            <input type="password" class="form-control" name="password" id="password" th:value="${request.password}" required>
         </div>
-        <button type="submit" class="btn btn-primary">Login</button>
+        <button type="submit" class="btn-primary">Login</button>
     </form>
 
     <div th:if="${error}" class="alert alert-danger" th:text="${error}"></div>
 </div>
-
 </body>
 </html>

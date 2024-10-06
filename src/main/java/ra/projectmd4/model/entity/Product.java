@@ -59,7 +59,6 @@ public class Product {
     private Timestamp updatedAt;
 
     public void update() {
-//        this.updatedAt = Date.valueOf(LocalDate.now());
         this.updatedAt = Timestamp.valueOf(LocalDateTime.now());
     }
 

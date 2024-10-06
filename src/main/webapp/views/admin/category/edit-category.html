@@ -1,20 +1,25 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org"
->
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
-</head>
+    <title>Update Category</title>
+    <link rel="stylesheet" href="/css/adminmanagement.css"></head>
 <body>
 <h1>Update Category</h1>
+
+<div th:if="${message}" class="alert alert-info" th:text="${message}"></div>
+<div th:if="${errorMessage}" class="alert alert-danger">
+    <p th:text="${errorMessage}"></p>
+</div>
+
 <form th:action="@{/admin/category/update(id=${category.id})}" method="post">
     <div>
-        <label for="id">Id</label>
+        <label for="id">Id:</label>
         <input type="text" th:value="${category.id}" name="id" id="id" readonly>
     </div>
     <div>
-        <label for="name">Category's name</label>
-        <input type="text" th:value="${category.name}" name="name" id="name">
+        <label for="name">Category's Name:</label>
+        <input type="text" th:value="${category.name}" name="name" id="name" required>
     </div>
     <div>
         <label>Status:</label>

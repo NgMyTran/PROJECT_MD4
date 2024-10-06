@@ -6,11 +6,12 @@
     <title>Product Page Design</title>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap" rel="stylesheet">
     <style>
         body {
             font-family: 'Roboto', sans-serif;
-            /*margin: 0;*/
-            /*padding: 0;*/
         }
 
         .navbar {
@@ -29,6 +30,43 @@
             color: #28a745;
         }
 
+        .navbar button{
+            background-color: #914646fc;
+            border-radius: 4px;
+        }
+        .video-container {
+            position: relative;
+            width: 100%;
+            height: 50vh; /* Chiều cao 100% của viewport */
+            overflow: hidden; /* Ẩn phần video bị tràn */
+        }
+        .video-container video {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            min-width: 100%;
+            min-height: 100%;
+            width: auto;
+            height: auto;
+            transform: translate(-50%, -50%);
+            z-index: 1;
+        }
+
+        .video-caption {
+            font-family: "Playfair Display", serif;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: white;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+            text-align: center;
+            z-index: 2;
+        }
+        .container{
+            text-align: center;
+            margin-bottom: 36px;
+        }
         /* Hero Section */
         .hero {
             background: url('/static/img/photos/heading.jpg') no-repeat center center/cover;
@@ -56,42 +94,10 @@
             margin-top: 1rem;
         }
 
-        /* Product Section */
-        .product-section {
-            padding: 3rem 0;
-        }
-
-        .product-section h2 {
-            text-align: center;
-            margin-bottom: 2rem;
-            font-weight: 500;
-        }
-
-        .product-card img {
-            height: 200px;
-            object-fit: cover;
-        }
-
-        .product-card {
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            border-radius: 8px;
-            overflow: hidden;
-            text-align: center;
-        }
-
-        .product-card h5 {
-            margin-top: 1rem;
-            font-size: 1.1rem;
-        }
-
-        .product-card .price {
-            color: #28a745;
-            font-weight: bold;
-        }
-
+        /*a*/
         /* Testimonials Section */
         .testimonials {
-            background-color: #f9f9f9;
+            background-color: #aa6161;
             padding: 3rem 0;
         }
 
@@ -116,6 +122,80 @@
             font-size: 1rem;
         }
 
+        .testimonials button{
+            background-color: #602525;
+        }
+        .carousel-item img {
+            height: 300px; /* Adjust this value based on your design */
+            object-fit: cover; /* Ensures the image covers the area without distortion */
+        }
+        .carousel-caption{color: #de9569}
+
+        /* Product Section */
+        .product-card {
+            background-color: #fff;
+            border: 1px solid #eaeaea;
+            border-radius: 8px;
+            padding: 15px;
+            text-align: center;
+            position: relative;
+            transition: transform 0.3s ease;
+        }
+
+        .product-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .product-card img {
+            object-fit: cover; /* Ảnh không bị biến dạng */
+            margin-bottom: 15px;
+        }
+
+        .product-card .new-label {
+            position: absolute;
+            top: 15px;
+            left: 15px;
+            background-color: #fff;
+            border: 1px solid #eaeaea;
+            border-radius: 20px;
+            padding: 5px 10px;
+            font-size: 12px;
+            font-weight: bold;
+            color: #1f1f1f;
+        }
+
+        .product-card h5 {
+            font-size: 16px;
+            font-weight: 600;
+            margin-bottom: 10px;
+            color: #1f1f1f;
+        }
+
+        .price {
+            font-size: 18px;
+            font-weight: 700;
+            color: #1f1f1f;
+            margin-bottom: 15px;
+        }
+
+        .product-card form button {
+            background-color: #004225;
+            color: #fff;
+            border: none;
+            border-radius: 30px;
+            padding: 12px 20px;
+            font-size: 14px;
+            font-weight: bold;
+            cursor: pointer;
+            width: 100%;
+            transition: background-color 0.3s ease;
+        }
+
+        .product-card form button:hover {
+            background-color: #022e17;
+        }
+
+
         /* Footer Section */
         footer {
             background-color: #333;
@@ -128,98 +208,86 @@
 </head>
 <body>
 <!-- Header Section -->
-<nav class="navbar navbar-expand-lg navbar-light">
-    <span>
-        <img src="/img/icons/icon.jpg">
-        <a class="navbar-brand" href="#">Candleaf</a>
-    </span>
-    <div class="collapse navbar-collapse" style="margin-left:433px">
-        <ul class="navbar-nav ml-auto">
-            <li class="nav-item"><a href="#" class="nav-link">Discovery</a></li>
-            <li class="nav-item"><a href="#" class="nav-link">About</a></li>
-            <li class="nav-item"><a href="#" class="nav-link">Contact us</a></li>
-        </ul>
-    </div>
+<div th:replace="/layout/user/head.html"></div>
 
-    <div style="display: flex; flex-direction: row">
-            <div class="dropdown me-2">
-                <span th:text="${#ctx.session.userLogin != null ? #ctx.session.userLogin.fullName : ''}"></span>
-                <button class="btn dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown"
-                    aria-expanded="false">
-                <img src="/img/icons/Profile.jpg">
-            </button>
-                <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                <li><a class="dropdown-item" href="/register">Register</a></li>
-                <li><a class="dropdown-item" href="/login">Login</a></li>
-                <li><a class="dropdown-item" href="/logout">Logout</a></li>
-                </ul>
-            </div>
-        <span th:if="${#ctx.session.userLogin != null}">
-        <button style="margin-top: 10px; background-color: white; border: none" onclick="window.location.href='/user/cart/cart-items'">
-            <img src="/img/icons/Cart.jpg" alt="Giỏ hàng">
-       <span th:text="${totalQuantity}" style="margin-left: 5px; font-weight: bold;"></span>
-        </button>
-    </span>
+<div class="video-container">
+    <video autoplay muted loop>
+        <source src="https://cdn.shopify.com/videos/c/o/v/d90ddddaa6544d5ba13b7ecc9f5ab69d.webm" type="video/webm">
+    </video>
+    <div class="video-caption">
+        <h2 class="h1">The Guest Ready Home</h2>
     </div>
-</nav>
-<img src="/img/photos/heading.jpg" width="100%"/>
+</div>
 
-<!-- Products Section -->
-<section class="product-section">
-    <div class="container">
-        <h2>Products</h2>
-        <div class="row">
-            <div class="col-md-3" th:each="product : ${sellerProduct}">
-                <div class="product-card">
-                    <p class="id" th:text="${product.id}" type="hidden"></p>
-                    <img th:src="@{${product.image}}" alt="Product Image" class="img-fluid">
-                    <h5 th:text="${product.productName}">Product Name</h5>
-                    <p class="price" th:text="${product.price}">Price</p>
-                    <form th:action="@{/user/cart/add}" method="post">
-                        <input type="hidden" name="productId" th:value="${product.id}" />
-                        <button type="submit">Add To Cart</button>
-                    </form>
-                </div>
-            </div>
-
-        </div>
-    </div>
-</section>
 
 <!-- Testimonials Section -->
 <section class="testimonials">
     <div class="container">
-        <h2>Testimonials</h2>
+        <h2 style="color: antiquewhite; margin-top: -16px;">Testimonials</h2>
+        <div id="testimonialCarousel" class="carousel slide" data-bs-ride="carousel">
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <img src="/img/photos/mua-tinh-dau-nguyen-chat-o-dau-uy-tin-chat-luong-tai-tp-ho-chi-minh-tinh-dau-bach-dan-chanh-1.jpg" class="d-block w-50 mx-auto" alt="Customer Image" width="80">
+                    <div class="carousel-caption">
+                        <h5>“I love it! No more air fresheners”</h5>
+                        <p>- Lisa</p>
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <img src="/img/photos/Tea_tree_oil_20893b671f.webp" class="d-block w-50 mx-auto" alt="Customer Image" width="80">
+                    <div class="carousel-caption">
+                        <h5>“Recommended for everyone”</h5>
+                        <p>- Eduardo</p>
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <img src="/img/photos/Tinh-dầu-Oải-hương-Lavender-cao-cấp.jpg" class="d-block w-50 mx-auto" alt="Customer Image" width="80">
+                    <div class="carousel-caption">
+                        <h5>“Looks very natural, the smell is awesome”</h5>
+                        <p>- Mart</p>
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <img src="/img/photos/thanh-phan-cua-tinh-dau-bac-ha.jpg" class="d-block w-50 mx-auto" alt="Customer Image" width="80">
+                    <div class="carousel-caption">
+                        <h5>“Best purchase ever!”</h5>
+                        <p>- John</p>
+                    </div>
+                </div>
+            </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#testimonialCarousel" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#testimonialCarousel" data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Next</span>
+            </button>
+        </div>
+    </div>
+</section>
+
+<!-- Product Section -->
+<section>
+    <div class="container">
+        <h2 style="margin-top: 35px; margin-bottom: 25px">Products</h2>
         <div class="row">
-            <div class="col-md-4">
-                <div class="testimonial-card">
-                    <img src="customer1.jpg" alt="Customer Image" width="80">
-                    <h5>“I love it! No more air fresheners”</h5>
-                    <p>- Lisa</p>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="testimonial-card">
-                    <img src="customer2.jpg" alt="Customer Image" width="80">
-                    <h5>“Recommended for everyone”</h5>
-                    <p>- Eduardo</p>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="testimonial-card">
-                    <img src="customer3.jpg" alt="Customer Image" width="80">
-                    <h5>“Looks very natural, the smell is awesome”</h5>
-                    <p>- Mart</p>
+            <div class="col-md-3" th:each="product : ${sellerProduct}">
+                <div class="product-card">
+                    <img th:src="@{${product.image}}" alt="Product Image" class="img-fluid">
+                    <form th:action="@{/user/cart/add}" method="post">
+                        <input type="hidden" name="productId" th:value="${product.id}" />
+                        <button type="submit">Add To Cart</button>
+                    </form>
+                    <h5 th:text="${product.productName}">Product Name</h5>
+                    <p class="price" th:text="${product.price}">Price</p>
                 </div>
             </div>
         </div>
     </div>
 </section>
-<footer>
-    <p>&copy; 2024 Candleaf - All Rights Reserved.</p>
-</footer>
+<footer th:replace="/layout/user/foot.html"></footer>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
-
 </body>
 </html>

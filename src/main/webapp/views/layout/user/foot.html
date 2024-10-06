@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+>
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        /* CSS Styling */
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+        }
+
+        .footer {
+            background-color: #1c1c1c;
+            color: #fff;
+            padding: 40px 0;
+        }
+
+        .footer-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 -4px;
+        }
+
+        .footer-logo {
+            max-width: 200px;
+        }
+
+        .footer-logo img {
+            width: 40px;
+            height: auto;
+            margin-bottom: 10px;
+        }
+
+        .footer-logo p {
+            font-size: 14px;
+            line-height: 1.5;
+            color: #bfbfbf;
+        }
+
+        .footer-links {
+            display: flex;
+            gap: 40px;
+        }
+
+        .footer-column h3 {
+            font-size: 16px;
+            color: #4CAF50; /* Green color for headings */
+            margin-bottom: 10px;
+        }
+
+        .footer-column ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .footer-column ul li {
+            margin-bottom: 8px;
+        }
+
+        .footer-column ul li a {
+            text-decoration: none;
+            color: #bfbfbf;
+            font-size: 14px;
+            transition: color 0.3s;
+        }
+
+        .footer-column ul li a:hover {
+            color: #4CAF50; /* Green color on hover */
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .footer-container {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .footer-logo {
+                text-align: center;
+                margin-bottom: 20px;
+            }
+
+            .footer-links {
+                flex-direction: column;
+                gap: 20px;
+                align-items: center;
+            }
+        }
+
+    </style>
+</head>
+<body>
+<!-- layout/footer.html -->
+<footer class="footer">
+    <div class="footer-container">
+        <div class="footer-logo">
+            <img src="/img/icons/icon.jpg" alt="Candleaf Logo">
+            <p>Your natural candle made for your home and for your wellness.</p>
+        </div>
+        <div class="footer-links">
+            <div class="footer-column">
+                <h3>Discovery</h3>
+                <ul>
+                    <li><a href="#">New season</a></li>
+                    <li><a href="#">Most searched</a></li>
+                    <li><a href="#">Most selled</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3>About</h3>
+                <ul>
+                    <li><a href="#">Help</a></li>
+                    <li><a href="#">Shipping</a></li>
+                    <li><a href="#">Affiliate</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3>Info</h3>
+                <ul>
+                    <li><a href="#">Contact us</a></li>
+                    <li><a href="#">Privacy Policies</a></li>
+                    <li><a href="#">Terms & Conditions</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</footer>
+</body>
+</html>

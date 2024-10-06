@@ -7,7 +7,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="Responsive Admin &amp; Dashboard Template based on Bootstrap 5">
     <meta name="author" content="AdminKit">
-    <meta name="keywords" content="adminkit, bootstrap, bootstrap 5, admin, dashboard, template, responsive, css, sass, html, theme, front-end, ui kit, web">
+    <meta name="keywords"
+          content="adminkit, bootstrap, bootstrap 5, admin, dashboard, template, responsive, css, sass, html, theme, front-end, ui kit, web">
 
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link rel="shortcut icon" href="img/icons/icon-48x48.png"/>
@@ -30,10 +31,18 @@
             </a>
             <ul class="sidebar-nav">
                 <li class="sidebar-header">Pages</li>
-                <li class="sidebar-item"><a class="sidebar-link" href="/admin"><i class="align-middle" data-feather="grid"></i> <span class="align-middle">Dashboard</span></a></li>
-                <li class="sidebar-item"><a class="sidebar-link" href="/admin/category"><i class="align-middle" data-feather="grid"></i> <span class="align-middle">Category</span></a></li>
-                <li class="sidebar-item active"><a class="sidebar-link" href="/admin/product"><i class="align-middle" data-feather="square"></i> <span class="align-middle">Product</span></a></li>
-                <li class="sidebar-item"><a class="sidebar-link" href="/admin/user"><i class="align-middle" data-feather="user"></i> <span class="align-middle">User</span></a></li>
+                <li class="sidebar-item"><a class="sidebar-link" href="/admin"><i class="align-middle"
+                                                                                  data-feather="grid"></i> <span
+                        class="align-middle">Dashboard</span></a></li>
+                <li class="sidebar-item"><a class="sidebar-link" href="/admin/category"><i class="align-middle"
+                                                                                           data-feather="grid"></i>
+                    <span class="align-middle">Category</span></a></li>
+                <li class="sidebar-item active"><a class="sidebar-link" href="/admin/product"><i class="align-middle"
+                                                                                                 data-feather="square"></i>
+                    <span class="align-middle">Product</span></a></li>
+                <li class="sidebar-item"><a class="sidebar-link" href="/admin/user"><i class="align-middle"
+                                                                                       data-feather="user"></i> <span
+                        class="align-middle">User</span></a></li>
             </ul>
         </div>
     </nav>
@@ -54,6 +63,18 @@
                     <div class="card-header">
                         <h3 class="card-title">Danh sách Sản phẩm</h3>
                         <a href="/admin/product/add" class="btn btn-success">+ ADD NEW</a>
+                        <nav class="navbar navbar-expand-lg bg-light">
+                            <div class="container-fluid">
+                                <form class="d-flex" role="search" th:action="@{/admin/product}" method="get">
+                                    <input class="form-control me-2 fst-italic" type="search" name="keyword"
+                                           th:value="${keyword}"
+                                           placeholder="Enter product's name... "
+                                           aria-label="Search">
+                                    <button class="btn btn-outline-success" type="submit">Search</button>
+                                </form>
+                            </div>
+                        </nav>
+
                     </div>
                     <div class="card-body">
                         <table id="example1" class="table table-bordered table-striped text-center">
@@ -68,52 +89,58 @@
                             </tr>
                             </thead>
                             <tbody>
-                            <tr th:each="product,loop : ${products}" >
+                            <tr th:each="product,loop : ${products}">
                                 <td th:text="${loop.count}"></td>
                                 <td th:text="${product.productName}"></td>
                                 <td th:text="${product.price}"></td>
                                 <td th:text="${product.stock}"></td>
-                                <td th:text="${product.category.name}"></td>
+                                <td th:text="${product.categoryName}"></td>
                                 <td>
-                                    <form th:action="|/admin/product/detail/${product.id}|" method="get" style="display:inline;">
+                                    <form th:action="|/admin/product/detail/${product.productId}|" method="get"
+                                          style="display:inline;">
                                         <button type="submit" class="btn btn-info">Detail</button>
                                     </form>
-                                    <form th:action="|/admin/product/edit/${product.id}|" method="get" style="display:inline;">
+                                    <form th:action="|/admin/product/edit/${product.productId}|" method="get"
+                                          style="display:inline;">
                                         <button type="submit" class="btn btn-primary">Edit</button>
                                     </form>
-                                    <span th:if="${!product.category.status}"> (Cannot edit)</span>
-                                    <form th:action="|/admin/product/delete/${product.id}|" method="post" style="display:inline;">
+                                    <form th:action="|/admin/product/delete/${product.productId}|" method="post"
+                                          style="display:inline;">
+                                        <input type="hidden" name="confirm" value="true">
                                         <input type="hidden" name="_method" value="delete">
-                                        <button type="submit" class="btn btn-danger" onclick="return confirm('Are you sure you want to delete this product?');">Delete</button>
+                                        <button type="submit" class="btn btn-danger"
+                                                onclick="return confirm('Are you sure you want to delete this product?');">
+                                            Delete
+                                        </button>
                                     </form>
                                 </td>
-
                             </tr>
                             </tbody>
                         </table>
-                    </div>
-                </div>
 
-                <footer class="footer">
-                    <div class="container-fluid">
-                        <div class="row text-muted">
-                            <div class="col-6 text-start">
-                                <p class="mb-0">
-                                    <a class="text-muted" href="" target="_blank"><strong>DemoAdminKit</strong></a>
-                                    - <a class="text-muted" href="" target="_blank"><strong>Bootstrap Admin Template</strong></a> &copy;
-                                </p>
-                            </div>
-                            <div class="col-6 text-end">
-                                <ul class="list-inline">
-                                    <li class="list-inline-item"><a class="text-muted" href="#" target="_blank">Support</a></li>
-                                    <li class="list-inline-item"><a class="text-muted" href="#" target="_blank">Help Center</a></li>
-                                    <li class="list-inline-item"><a class="text-muted" href="#" target="_blank">Privacy</a></li>
-                                    <li class="list-inline-item"><a class="text-muted" href="#" target="_blank">Terms</a></li>
+                        <div>
+                            <nav aria-label="Page navigation example">
+                                <ul class="pagination float-end mx-4">
+                                    <li class="page-item" th:classappend="${page == 0} ? 'disabled' : ''">
+                                        <a class="page-link"
+                                           th:href="@{/admin/product(page=${page - 1}, keyword=${keyword})}">Previous</a>
+                                    </li>
+                                    <th:block th:each="loopStat, iterStat : ${#numbers.sequence(0, totalPages - 1)}">
+                                        <li class="page-item" th:classappend="${loopStat == page} ? 'active' : ''">
+                                            <a class="page-link"
+                                               th:href="@{/admin/product(page=${loopStat}, keyword=${keyword})}"
+                                               th:text="|${loopStat + 1}|"></a>
+                                        </li>
+                                    </th:block>
+                                    <li class="page-item" th:classappend="${page + 1 == totalPages} ? 'disabled' : ''">
+                                        <a class="page-link"
+                                           th:href="@{/admin/product(page=${page + 1}, keyword=${keyword})}">Next</a>
+                                    </li>
                                 </ul>
-                            </div>
+                            </nav>
                         </div>
                     </div>
-                </footer>
+                </div>
             </div>
         </main>
     </main>

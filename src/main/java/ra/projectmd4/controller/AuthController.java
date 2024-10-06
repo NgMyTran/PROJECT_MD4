@@ -24,6 +24,7 @@ public class AuthController {
         model.addAttribute("request", new FormLogin());
         return "auth/login";
     }
+
     @GetMapping("/register")
     public String register(){
         return "auth/register";
@@ -55,6 +56,7 @@ public String logout(HttpSession session){
                 model.addAttribute("error", "Tài khoản của bạn đã bị khóa. Vui lòng liên hệ hỗ trợ.");
                 return "auth/login";
             }
+            System.out.println("Username: " + request.getUsername());
 
             if (userInfo.isRole()) {
                 return "redirect:/admin"; // Redirect to admin if the user is an admin

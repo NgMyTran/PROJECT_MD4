@@ -1,18 +1,21 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org"
->
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Add Category</title>
+    <link rel="stylesheet" href="/css/adminmanagement.css">
 </head>
 <body>
-<h1>Thêm moi Category</h1>
+<h1>Add New Category</h1>
+<div th:if="${message}" class="alert alert-info" th:text="${message}"></div>
+<div th:if="${errorMessage}" class="alert alert-danger">
+    <p th:text="${errorMessage}"></p>
+</div>
 <form th:action="@{/admin/category/added}" method="post">
     <div>
-        <label for="name">Category's name</label>
-        <input type="text" name="name" id="name">
+        <label for="name">Category's Name:</label>
+        <input type="text" name="name" id="name" required>
     </div>
-
     <input type="submit" value="ADD">
 </form>
 </body>

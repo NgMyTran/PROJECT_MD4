@@ -5,15 +5,20 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import ra.projectmd4.model.entity.Category;
+import ra.projectmd4.model.entity.Product;
 import ra.projectmd4.service.category.ICategoryService;
+import ra.projectmd4.service.product.IProductService;
 
 import javax.persistence.PersistenceContext;
+import java.util.List;
 
 @Controller
 @RequestMapping("/admin/category")
 public class CategoryController {
     @Autowired
     private ICategoryService categoryService;
+    @Autowired
+    private IProductService productService;
 
     @GetMapping
     public String listCategory(Model model) {
@@ -40,9 +45,11 @@ public class CategoryController {
         categoryService.save(category);
         return "redirect:/admin/category";
     }
+
     @PostMapping("/delete/{id}")
     public String deleteCategory(@PathVariable Long id, @RequestParam boolean confirm) {
-        categoryService.deleteCategoryConfirm(id, confirm);
+        categoryService.deleteCategoryConfirm(id, true);
         return "redirect:/admin/category";
     }
+
 }

@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -20,7 +19,6 @@
 
     <link th:href="@{/css/app.css}" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
-
     <script>
         function confirmDelete() {
             return confirm("Category này hiện đang có sản phẩm. Bạn có chắc chắn muốn chuyển trạng thái của nó và các sản phẩm thuộc nó không?");
@@ -91,7 +89,7 @@
                             </tr>
                             </thead>
                             <tbody>
-                            <tr th:each="c, loop : ${categories}">
+                            <tr th:each="c, loop : ${categories}"  th:style="${!c.status} ? 'text-decoration: line-through; color: red;' : ''">
                                 <td th:text="${loop.index + 1}"></td>
                                 <td th:text="${c.name}"></td>
                                 <td th:text="${c.status} ? 'Active' : 'Inactive'"></td>
@@ -101,6 +99,7 @@
                                     </form>
                                     <span th:if="${!c.status}"> (Cannot edit)</span>
                                     <form th:action="|/admin/category/delete/${c.id}|" method="post" style="display:inline;">
+                                        <input type="hidden" name="confirm" value="true">
                                         <input type="hidden" name="_method" value="delete">
                                         <button type="submit" class="btn btn-danger" onclick="return confirmDelete();">Delete</button>
                                     </form>
@@ -111,31 +110,32 @@
                     </div>
                 </div>
 
-                <footer class="footer">
-                    <div class="container-fluid">
-                        <div class="row text-muted">
-                            <div class="col-6 text-start">
-                                <p class="mb-0">
-                                    <a class="text-muted" href="" target="_blank"><strong>DemoAdminKit</strong></a>
-                                    - <a class="text-muted" href="" target="_blank"><strong>Bootstrap Admin
-                                    Template</strong></a> &copy;
-                                </p>
-                            </div>
-                            <div class="col-6 text-end">
-                                <ul class="list-inline">
-                                    <li class="list-inline-item"><a class="text-muted" href="#"
-                                                                    target="_blank">Support</a></li>
-                                    <li class="list-inline-item"><a class="text-muted" href="#" target="_blank">Help
-                                        Center</a></li>
-                                    <li class="list-inline-item"><a class="text-muted" href="#"
-                                                                    target="_blank">Privacy</a></li>
-                                    <li class="list-inline-item"><a class="text-muted" href="#"
-                                                                    target="_blank">Terms</a></li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </footer>
+<!--                <footer class="footer">-->
+<!--                    <div class="container-fluid">-->
+<!--                        <div class="row text-muted">-->
+<!--                            <div class="col-6 text-start">-->
+<!--                                <p class="mb-0">-->
+<!--                                    <a class="text-muted" href="" target="_blank"><strong>DemoAdminKit</strong></a>-->
+<!--                                    - <a class="text-muted" href="" target="_blank"><strong>Bootstrap Admin-->
+<!--                                    Template</strong></a> &copy;-->
+<!--                                </p>-->
+<!--                            </div>-->
+<!--                            <div class="col-6 text-end">-->
+<!--                                <ul class="list-inline">-->
+<!--                                    <li class="list-inline-item"><a class="text-muted" href="#"-->
+<!--                                                                    target="_blank">Support</a></li>-->
+<!--                                    <li class="list-inline-item"><a class="text-muted" href="#" target="_blank">Help-->
+<!--                                        Center</a></li>-->
+<!--                                    <li class="list-inline-item"><a class="text-muted" href="#"-->
+<!--                                                                    target="_blank">Privacy</a></li>-->
+<!--                                    <li class="list-inline-item"><a class="text-muted" href="#"-->
+<!--                                                                    target="_blank">Terms</a></li>-->
+<!--                                </ul>-->
+<!--                            </div>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                </footer>-->
+                    <footer th:replace="layout/admin/foot.html"></footer>
             </div>
         </main>
     </main>

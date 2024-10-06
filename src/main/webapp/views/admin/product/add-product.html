@@ -1,13 +1,14 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org"
->
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Add New Product</title>
+    <link rel="stylesheet" href="/css/adminmanagement.css"></head>
 </head>
 <body>
 <h1>Add New Product</h1>
 <form th:action="@{/admin/product/added}" method="post" enctype="multipart/form-data">
+    <div th:if="${error}" class="alert-danger" th:text="${error}"></div> <!-- Error message -->
     <div>
         <label for="sku">Sku:</label>
         <input type="text" name="sku" id="sku" required>
@@ -28,7 +29,6 @@
         <label for="imageFile">Image:</label>
         <input type="file" name="imageFile" id="imageFile" accept="image/*" required>
     </div>
-<!--    tất cả các loại tệp hình ảnh: jpg, gif,png,...-->
     <div>
         <label for="description">Description:</label>
         <input type="text" name="description" id="description" required>

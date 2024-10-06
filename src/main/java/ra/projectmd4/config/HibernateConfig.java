@@ -40,6 +40,7 @@ public class HibernateConfig {
         return properties;
     }
 
+
     //3. Cấu hình Entity Manager Factory, nhà máy quản lý các entity
     @Bean
     public LocalContainerEntityManagerFactoryBean entityManagerFactory() {
@@ -54,7 +55,6 @@ public class HibernateConfig {
         return entityManagerFactory;
     }
 
-
     //chứa các thao tác tương tác với bên thứ 3 ở trên
     @Bean
     @Qualifier(value = "entityManager")
@@ -68,5 +68,4 @@ public class HibernateConfig {
         transactionManager.setEntityManagerFactory(entityManagerFactory);
         return transactionManager;
     }
-
 }

@@ -5,6 +5,8 @@ import org.springframework.stereotype.Service;
 import org.springframework.util.FileCopyUtils;
 import org.springframework.web.multipart.MultipartFile;
 import ra.projectmd4.dao.product.IProductDao;
+import ra.projectmd4.model.dto.response.ProductResponse;
+import ra.projectmd4.model.dto.response.UserResponse;
 import ra.projectmd4.model.entity.Product;
 
 import javax.servlet.ServletContext;
@@ -17,11 +19,22 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.Collections;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class ProductServiceImpl implements IProductService {
     @Autowired
     private IProductDao productDao;
+
+    @Override
+    public List<ProductResponse> getListProducts(String key, int page, int size) {
+        return productDao.getListProducts(key,page,size).stream().map(ProductResponse::new).collect(Collectors.toList());
+    }
+
+    @Override
+    public long getTotalElements(String key) {
+        return productDao.getTotalElements(key);
+    }
 
     @Override
     public List<Product> findAll() {
