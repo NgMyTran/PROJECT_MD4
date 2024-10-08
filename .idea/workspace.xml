@@ -5,67 +5,50 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="3f5f54fa-e215-493d-8e53-dcf9b9ac0802" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/ra/projectmd4/model/dto/response/ProductResponse.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ra/projectmd4/model/entity/Address.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ra/projectmd4/model/entity/Order.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ra/projectmd4/model/entity/OrderStatus.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/static/css/adminmanagement.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/static/img/photos/Tea_tree_oil_20893b671f.webp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/static/img/photos/Tinh-dầu-Oải-hương-Lavender-cao-cấp.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/static/img/photos/green-spa-setting-wellness-background-260nw-1355859986.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/static/img/photos/green-spa-setting-wellness-background-260nw-1381009220.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/static/img/photos/mua-tinh-dau-nguyen-chat-o-dau-uy-tin-chat-luong-tai-tp-ho-chi-minh-tinh-dau-bach-dan-chanh-1.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/static/img/photos/thanh-phan-cua-tinh-dau-bac-ha.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/static/img/photos/tinh dầu là gì(1).png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/views/layout/admin/foot.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/views/layout/admin/head.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/views/layout/admin/sidebar.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/views/layout/user/foot.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/views/layout/user/head.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/ra/projectmd4/controller/OderDetailController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/ra/projectmd4/controller/OrderController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/ra/projectmd4/controller/user/ProductController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/ra/projectmd4/dao/order/IOrderDao.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/ra/projectmd4/dao/order/OrderDaoImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/ra/projectmd4/dao/orderdetai/IOrderDetailDaoImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/ra/projectmd4/dao/orderdetai/OrderDetailDaoImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/ra/projectmd4/model/entity/OrderDetail.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/ra/projectmd4/service/order/IOrderService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/ra/projectmd4/service/order/OrderServiceImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/ra/projectmd4/service/orderdetail/IOrderDetailService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/ra/projectmd4/service/orderdetail/OrderDetailServiceImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/views/layout/admin/navbar.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/views/user/address.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/views/user/bill.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/views/user/product_detail.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/dataSources/739f2229-a22c-4066-b84c-a2179e28032c.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/739f2229-a22c-4066-b84c-a2179e28032c.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ra/projectmd4/config/HibernateConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ra/projectmd4/config/HibernateConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ra/projectmd4/controller/AuthController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ra/projectmd4/controller/AuthController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/ra/projectmd4/controller/HomeController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ra/projectmd4/controller/HomeController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/ra/projectmd4/controller/admin/CategoryController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ra/projectmd4/controller/admin/CategoryController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/ra/projectmd4/controller/admin/ProductController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ra/projectmd4/controller/admin/ProductController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/ra/projectmd4/controller/user/ShoppingCartController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ra/projectmd4/controller/user/ShoppingCartController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ra/projectmd4/dao/category/CategoryDaoImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ra/projectmd4/dao/category/CategoryDaoImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ra/projectmd4/dao/category/ICategoryDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ra/projectmd4/dao/category/ICategoryDao.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/ra/projectmd4/dao/product/IProductDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ra/projectmd4/dao/product/IProductDao.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/ra/projectmd4/dao/product/ProductDaoImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ra/projectmd4/dao/product/ProductDaoImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ra/projectmd4/model/entity/Category.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ra/projectmd4/model/entity/Category.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ra/projectmd4/model/entity/Product.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ra/projectmd4/model/entity/Product.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ra/projectmd4/service/category/CategoryServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ra/projectmd4/service/category/CategoryServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ra/projectmd4/service/category/ICategoryService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ra/projectmd4/service/category/ICategoryService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ra/projectmd4/dao/shoppingcart/IShoppingCartDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ra/projectmd4/dao/shoppingcart/IShoppingCartDao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ra/projectmd4/dao/shoppingcart/ShoppingCartDaoImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ra/projectmd4/dao/shoppingcart/ShoppingCartDaoImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ra/projectmd4/model/entity/Order.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ra/projectmd4/model/entity/Order.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ra/projectmd4/model/entity/OrderStatus.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ra/projectmd4/model/entity/OrderStatus.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/ra/projectmd4/service/product/IProductService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ra/projectmd4/service/product/IProductService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/ra/projectmd4/service/product/ProductServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ra/projectmd4/service/product/ProductServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/uploads/Screenshot 2024-05-31 050238.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/uploads/Screenshot 2024-05-31 051018.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/uploads/Screenshot 2024-05-31 094513.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/uploads/Screenshot 2024-06-05 152245.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/uploads/Screenshot 2024-06-13 085754.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/uploads/Screenshot 2024-06-21 150000.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/uploads/Screenshot 2024-06-29 094533.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/uploads/Screenshot 2024-06-30 134315.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/uploads/Screenshot 2024-07-11 144623.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/uploads/Screenshot 2024-07-11 153708.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/uploads/Screenshot 2024-07-11 160554.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/uploads/Screenshot 2024-08-17 160500.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ra/projectmd4/service/shoppingcart/IShoppingCartService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ra/projectmd4/service/shoppingcart/IShoppingCartService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ra/projectmd4/service/shoppingcart/ShoppingCartServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ra/projectmd4/service/shoppingcart/ShoppingCartServiceImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/webapp/views/admin/category/add-category.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/views/admin/category/add-category.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/webapp/views/admin/category/edit-category.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/views/admin/category/edit-category.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/webapp/views/admin/category/list-category.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/views/admin/category/list-category.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/webapp/views/admin/dashboard.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/views/admin/dashboard.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/views/admin/product/add-product.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/views/admin/product/add-product.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/webapp/views/admin/product/detail-product.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/views/admin/product/detail-product.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/webapp/views/admin/product/edit-product.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/views/admin/product/edit-product.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/views/admin/product/list-product.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/views/admin/product/list-product.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/webapp/views/admin/user.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/views/admin/user.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/views/auth/login.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/views/auth/login.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/views/auth/register.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/views/auth/register.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/views/layout/foot.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/views/layout/head.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/views/layout/sidebar.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/views/layout/admin/head.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/views/layout/admin/head.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/views/layout/admin/sidebar.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/views/layout/admin/sidebar.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/views/layout/user/head.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/views/layout/user/head.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/webapp/views/user/cart_items.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/views/user/cart_items.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/webapp/views/user/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/views/user/index.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/webapp/views/user/shopping_cart.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/views/user/shopping_cart.html" afterDir="false" />
@@ -102,8 +85,8 @@
       <list>
         <option value="JavaFXApplication" />
         <option value="Interface" />
-        <option value="HTML File" />
         <option value="Class" />
+        <option value="HTML File" />
       </list>
     </option>
   </component>
@@ -145,6 +128,7 @@
     &quot;Gradle.projectMd4 [:Test.main()].executor&quot;: &quot;Run&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;Tomcat Server.Tomcat 9.0.937.executor&quot;: &quot;Run&quot;,
+    &quot;extract.method.default.visibility&quot;: &quot;private&quot;,
     &quot;git-widget-placeholder&quot;: &quot;master&quot;,
     &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
     &quot;last_opened_file_path&quot;: &quot;C:/Users/TRAN/INTELLIJ/projectMd4/src/main/webapp/static/img/photos&quot;,
@@ -163,6 +147,9 @@
   }
 }</component>
   <component name="RecentsManager">
+    <key name="CreateClassDialog.RecentsKey">
+      <recent name="ra.projectmd4.service.order" />
+    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\TRAN\INTELLIJ\projectMd4\src\main\webapp\static\img\photos" />
       <recent name="C:\Users\TRAN\INTELLIJ\projectMd4\src\main\webapp\uploads" />
@@ -175,7 +162,20 @@
       <recent name="C:\Users\TRAN\INTELLIJ\projectMd4\src\main\webapp\static\js" />
     </key>
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="Tomcat Server.Tomcat 9.0.937">
+    <configuration name="Test" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="ra.projectmd4.model.entity.Test" />
+      <module name="projectMd4.main" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="ra.projectmd4.model.entity.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="Tomcat 9.0.937" type="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory" factoryName="Local" APPLICATION_SERVER_NAME="Tomcat 9.0.93" ALTERNATIVE_JRE_ENABLED="true" ALTERNATIVE_JRE_PATH="1.8">
       <option name="UPDATING_POLICY" value="hot-swap-classes" />
       <deployment>
@@ -264,6 +264,11 @@
         </option>
       </method>
     </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.Test" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="SharedIndexes">
     <attachedChunks>
@@ -297,7 +302,9 @@
       <workItem from="1728004411180" duration="14314000" />
       <workItem from="1728022682487" duration="30063000" />
       <workItem from="1728105197528" duration="38580000" />
-      <workItem from="1728184346288" duration="25707000" />
+      <workItem from="1728184346288" duration="49402000" />
+      <workItem from="1728264932675" duration="27027000" />
+      <workItem from="1728350017969" duration="9514000" />
     </task>
     <servers />
   </component>

@@ -8,7 +8,9 @@ import java.util.List;
 
 public interface IProductDao extends IGenericDao<Product, Long> {
     List<Product> getProductsByCategoryId(Long categoryId);
+     List<Product> findActiveProductsByCategoryId(Long categoryId);
 
     long getTotalElements(String key);
     List<Product> getListProducts(String key, int page, int size);
+//    List<Product> getListProducts(String key);
 }

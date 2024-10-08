@@ -28,39 +28,54 @@ public class HomeController {
 
     @GetMapping("/")
     public String home(Model model, HttpSession session) {
-        // Lấy tất cả các danh mục
-        List<Category> categories = iCategoryService.findAll(); // Giả sử bạn có dịch vụ để lấy danh mục
+        List<Category> categories = iCategoryService.findActiveCategories();
         List<Product> sellerProduct = new ArrayList<>();
-
         // Duyệt qua từng danh mục và lấy sản phẩm
         for (Category category : categories) {
-            List<Product> products = iProductService.findByCategoryId(category.getId());
-
+            List<Product> products = iProductService.findActiveProductsByCategoryId(category.getId());
             // Giới hạn số lượng sản phẩm hiển thị tối đa 2 cho mỗi danh mục
             if (products.size() > 2) {
-                products = products.stream().limit(2).collect(Collectors.toList());
+                products = products.stream().limit(1).collect(Collectors.toList());
             }
-
             sellerProduct.addAll(products); // Thêm sản phẩm vào danh sách sellerProduct
         }
-
         UserInfo userInfo = (UserInfo) session.getAttribute("userLogin");
         int totalQuantity = 0;
-
         if (userInfo != null) {
             List<ShoppingCart> cartItems = iShoppingCartService.findByUserId(userInfo.getUserId());
-            totalQuantity = cartItems.stream().mapToInt(ShoppingCart::getOrderQuantity).sum(); // Tính tổng số lượng
+            totalQuantity = cartItems.stream().mapToInt(ShoppingCart::getOrderQuantity).sum();
         }
-
         model.addAttribute("sellerProduct", sellerProduct);
         model.addAttribute("totalQuantity", totalQuantity);
-
         return "/user/index";
     }
+
 
     @GetMapping("/admin")
     public String admin(){
         return "admin/dashboard";
     }
+
+
+@GetMapping("/product-detail")
+public String productDetail(Model model, HttpSession session) {
+    List<Category> categories = iCategoryService.findActiveCategories();
+    List<Product> products = new ArrayList<>();
+    for (Category category : categories) {
+        List<Product> categoryProducts = iProductService.findActiveProductsByCategoryId(category.getId());
+        products.addAll(categoryProducts);
+    }
+    UserInfo userInfo = (UserInfo) session.getAttribute("userLogin");
+    int totalQuantity = 0;
+    if (userInfo != null) {
+        List<ShoppingCart> cartItems = iShoppingCartService.findByUserId(userInfo.getUserId());
+        totalQuantity = cartItems.stream().mapToInt(ShoppingCart::getOrderQuantity).sum(); // Tính tổng số lượng
+    }
+
+    model.addAttribute("totalQuantity", totalQuantity);
+    model.addAttribute("categories", categories);
+    model.addAttribute("products", products);
+    return "/user/product_detail";
+}
 
 }

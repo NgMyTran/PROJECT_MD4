@@ -14,5 +14,7 @@ public interface IProductService extends IGenericService<Product, Long> {
     List<Product> findByCategoryId(Long categoryId);
      void uploadImage(Product product, MultipartFile imageFile, ServletContext servletContext) throws IOException;
      List<ProductResponse> getListProducts(String key, int page, int size);
+//    List<ProductResponse> getListProducts(String key);
      long getTotalElements(String key);
+     List<Product> findActiveProductsByCategoryId(Long categoryId);
 }

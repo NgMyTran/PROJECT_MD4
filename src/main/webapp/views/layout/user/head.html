@@ -35,11 +35,11 @@
 <nav class="navbar navbar-expand-lg navbar-light">
     <span>
         <img src="/img/icons/icon.jpg">
-        <a class="navbar-brand" href="#">Candleaf</a>
+        <a class="navbar-brand" href="/">Candleaf</a>
     </span>
     <div class="collapse navbar-collapse" style="margin-left:433px">
         <ul class="navbar-nav ml-auto">
-            <li class="nav-item"><a href="#" class="nav-link">Discovery</a></li>
+            <li class="nav-item"><a href="/product-detail" class="nav-link">Discovery</a></li>
             <li class="nav-item"><a href="#" class="nav-link">About</a></li>
             <li class="nav-item"><a href="#" class="nav-link">Contact us</a></li>
         </ul>
@@ -67,3 +67,35 @@
 
 </body>
 </html>
+<!--<nav class="navbar navbar-expand-lg navbar-light">-->
+<!--    <span>-->
+<!--        <img src="/img/icons/icon.jpg" alt="Logo">-->
+<!--        <a class="navbar-brand" href="#">Candleaf</a>-->
+<!--    </span>-->
+<!--    <div class="collapse navbar-collapse" style="margin-left:433px">-->
+<!--        <ul class="navbar-nav ml-auto">-->
+<!--            <li class="nav-item"><a href="/product-detail" class="nav-link">Discovery</a></li>-->
+<!--            <li class="nav-item"><a href="#" class="nav-link">About</a></li>-->
+<!--            <li class="nav-item"><a href="#" class="nav-link">Contact us</a></li>-->
+<!--        </ul>-->
+<!--    </div>-->
+<!--    <div style="display: flex; flex-direction: row">-->
+<!--        <div class="dropdown me-2">-->
+<!--            <span th:text="${#ctx.session.userLogin != null ? #ctx.session.userLogin.fullName : ''}"></span>-->
+<!--            <button class="btn dropdown-toggle icon-btn" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">-->
+<!--                <img src="/img/icons/Profile.jpg" alt="Profile">-->
+<!--            </button>-->
+<!--            <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">-->
+<!--                <li th:if="${#ctx.session.userLogin == null}"><a class="dropdown-item" href="/register">Register</a></li>-->
+<!--                <li th:if="${#ctx.session.userLogin == null}"><a class="dropdown-item" href="/login">Login</a></li>-->
+<!--                <li th:if="${#ctx.session.userLogin != null}"><a class="dropdown-item" href="/logout">Logout</a></li>-->
+<!--            </ul>-->
+<!--        </div>-->
+<!--        <span th:if="${#ctx.session.userLogin != null}">-->
+<!--            <button class="icon-btn" style="margin-top: 10px; border: none; height: 38px;" onclick="window.location.href='/user/cart/cart-items'">-->
+<!--                <img src="/img/icons/Cart.jpg" alt="Giỏ hàng">-->
+<!--                <span th:text="${totalQuantity}" style="margin-left: 5px; font-weight: bold; color: white"></span>-->
+<!--            </button>-->
+<!--        </span>-->
+<!--    </div>-->
+<!--</nav>-->

@@ -1,3 +1,98 @@
+//
+//package ra.projectmd4.service.product;
+//
+//import org.springframework.beans.factory.annotation.Autowired;
+//import org.springframework.stereotype.Service;
+//import org.springframework.web.multipart.MultipartFile;
+//import ra.projectmd4.dao.product.IProductDao;
+//import ra.projectmd4.model.dto.response.ProductResponse;
+//import ra.projectmd4.model.entity.Product;
+//
+//import javax.servlet.ServletContext;
+//import javax.transaction.Transactional;
+//import java.io.File;
+//import java.io.IOException;
+//import java.sql.Timestamp;
+//import java.time.LocalDateTime;
+//import java.util.List;
+//import java.util.stream.Collectors;
+//
+//@Service
+//public class ProductServiceImpl implements IProductService {
+//    @Autowired
+//    private IProductDao productDao;
+//
+//    @Override
+//    public List<ProductResponse> getListProducts(String key, int page, int size) {
+//        return productDao.getListProducts(key, page, size).stream()
+//                .map(ProductResponse::new)
+//                .collect(Collectors.toList());
+//    }
+//
+//    @Override
+//    public long getTotalElements(String key) {
+//        return productDao.getTotalElements(key);
+//    }
+//
+//    @Override
+//    public List<Product> findAll() {
+//        return productDao.findAll();
+//    }
+//
+//    @Override
+//    public Product findById(Long id) {
+//        return productDao.findById(id);
+//    }
+//
+//    @Override
+//    @Transactional
+//    public void save(Product product) {
+//        if (product.getId() == null) {
+//            product.setCreatedAt(Timestamp.valueOf(LocalDateTime.now()));
+//            productDao.create(product);
+//        } else {
+//            product.setCreatedAt(product.getCreatedAt());
+//            product.update();
+//            productDao.update(product);
+//        }
+//    }
+//
+//    @Override
+//    @Transactional
+//    public void delete(Long id) {
+//        productDao.delete(id);
+//    }
+//
+//    @Override
+//    public List<Product> findByCategoryId(Long categoryId) {
+//        return productDao.getProductsByCategoryId(categoryId);
+//    }
+//
+//    @Override
+//    public List<Product> findActiveProductsByCategoryId(Long categoryId) {
+//        return productDao.findActiveProductsByCategoryId(categoryId);
+//    }
+//
+//    @Override
+//    @Transactional
+//    public void uploadImage(Product product, MultipartFile imageFile, ServletContext servletContext) throws IOException {
+//        String path = servletContext.getRealPath("/uploads");
+//        File uploadDir = new File(path);
+//        if (!uploadDir.exists()) {
+//            uploadDir.mkdirs();
+//        }
+//
+//        if (!imageFile.isEmpty()) {
+//            String fileName = imageFile.getOriginalFilename();
+//            File destinationFile = new File(uploadDir, fileName);
+//            imageFile.transferTo(destinationFile);
+//            product.setImage("/uploads/" + fileName); // Set image path in product
+//        } else {
+//            throw new IOException("No file uploaded");
+//        }
+//    }
+//}
+
 package ra.projectmd4.service.product;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -6,18 +101,14 @@ import org.springframework.util.FileCopyUtils;
 import org.springframework.web.multipart.MultipartFile;
 import ra.projectmd4.dao.product.IProductDao;
 import ra.projectmd4.model.dto.response.ProductResponse;
-import ra.projectmd4.model.dto.response.UserResponse;
 import ra.projectmd4.model.entity.Product;
 
 import javax.servlet.ServletContext;
 import javax.transaction.Transactional;
 import java.io.File;
 import java.io.IOException;
-import java.sql.Date;
 import java.sql.Timestamp;
-import java.time.LocalDate;
 import java.time.LocalDateTime;
-import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -30,6 +121,11 @@ public class ProductServiceImpl implements IProductService {
     public List<ProductResponse> getListProducts(String key, int page, int size) {
         return productDao.getListProducts(key,page,size).stream().map(ProductResponse::new).collect(Collectors.toList());
     }
+
+//    @Override
+//    public List<ProductResponse> getListProducts(String key) {
+//        return productDao.getListProducts(key).stream().map(ProductResponse::new).collect(Collectors.toList());
+//    }
 
     @Override
     public long getTotalElements(String key) {
@@ -69,6 +165,11 @@ public class ProductServiceImpl implements IProductService {
     @Override
     public List<Product> findByCategoryId(Long categoryId) {
         return productDao.getProductsByCategoryId(categoryId);
+    }
+
+    @Override
+    public List<Product> findActiveProductsByCategoryId(Long categoryId) {
+        return productDao.findActiveProductsByCategoryId(categoryId);
     }
 
     @Override

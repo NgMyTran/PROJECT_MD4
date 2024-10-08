@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.*;
 import ra.projectmd4.model.dto.response.UserInfo;
 import ra.projectmd4.model.entity.Product;
 import ra.projectmd4.model.entity.ShoppingCart;
+import ra.projectmd4.service.order.IOrderService;
 import ra.projectmd4.service.product.IProductService;
 import ra.projectmd4.service.shoppingcart.IShoppingCartService;
 
@@ -17,13 +18,11 @@ import java.text.DecimalFormat;
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
-
 @Controller
 @RequestMapping("/user/cart")
 public class ShoppingCartController {
     @Autowired
     private IShoppingCartService shoppingCartService;
-
     @Autowired
     private IProductService productService;
 
@@ -33,24 +32,15 @@ public class ShoppingCartController {
         if (u == null) {
             return "redirect:/login";
         }
-
         List<ShoppingCart> cartItems = shoppingCartService.findByUserId(u.getUserId());
-        int totalQuantity = cartItems.size();
-
+        int totalQuantity = cartItems.stream().mapToInt(ShoppingCart::getOrderQuantity).sum();
         if (cartItems.isEmpty()) {
             model.addAttribute("message", "Your cart is empty.");
         } else {
-            // Lấy danh sách sản phẩm tương ứng với các sản phẩm trong giỏ hàng
-            List<Product> products = cartItems.stream()
-                    .map(item -> productService.findById(item.getProductId()))
-                    .collect(Collectors.toList());
-
-            // Tính tổng số tiền
+            List<Product> products = shoppingCartService.getProductsFromCartItems(cartItems);
             BigDecimal totalAmount = shoppingCartService.calculateTotalAmount(cartItems);
-            DecimalFormat df = new DecimalFormat("#.##");
-            String formattedTotal = df.format(totalAmount);
+            String formattedTotal = new DecimalFormat("#.##").format(totalAmount);
 
-            // Cập nhật các thuộc tính cho model
             model.addAttribute("totalQuantity", totalQuantity);
             model.addAttribute("cartItems", cartItems);
             model.addAttribute("products", products);
@@ -64,30 +54,14 @@ public class ShoppingCartController {
                             @RequestParam("productId") Long productId,
                             HttpSession session) {
         if (session.getAttribute("userLogin") == null) {
-            return "redirect:/login"; // Chuyển hướng đến trang đăng nhập nếu chưa đăng nhập
+            return "redirect:/login";
         }
-
-        // Lấy thông tin sản phẩm từ ID
+        UserInfo u = (UserInfo) request.getSession().getAttribute("userLogin");
         Product product = productService.findById(productId);
         if (product == null) {
             return "redirect:/products";
         }
-
-        // Tạo ShoppingCart mới
-        UserInfo u = (UserInfo) request.getSession().getAttribute("userLogin");
-        ShoppingCart existingCartItem = shoppingCartService.findByUserIdAndProductId(u.getUserId(), productId);
-
-        if (existingCartItem != null) {
-            // Nếu sản phẩm đã có trong giỏ, tăng số lượng
-            existingCartItem.setOrderQuantity(existingCartItem.getOrderQuantity() + 1);
-            shoppingCartService.save(existingCartItem);
-        } else {
-            ShoppingCart shoppingCart = new ShoppingCart();
-            shoppingCart.setUserId(u.getUserId());
-            shoppingCart.setProductId(productId);
-            shoppingCart.setOrderQuantity(1);
-            shoppingCartService.save(shoppingCart);
-        }
+        shoppingCartService.saveShoppingCart(u, productId);
         return "redirect:/";
     }
 
@@ -101,42 +75,34 @@ public class ShoppingCartController {
         return "redirect:/user/cart/cart-items";
     }
 
-    // Xóa sản phẩm khỏi giỏ hàng
     @PostMapping("/delete/{id}")
     public String deleteFromCart(@PathVariable("id") Integer id) {
         shoppingCartService.delete(id);
         return "redirect:/user/cart/cart-items";
     }
 
-    @GetMapping("/shopping-cart")
-    public String shoppingCart(@RequestParam(value = "items", required = false) String items,
-                               Model model,
-                               HttpSession session) {
+    @PostMapping("/checkout")
+    public String checkout(@RequestParam(value = "items", required = false) String items,
+                           Model model,
+                           HttpSession session) {
         UserInfo u = (UserInfo) session.getAttribute("userLogin");
         if (u == null) {
-            return "redirect:/login"; // Chuyển hướng đến trang đăng nhập nếu chưa đăng nhập
+            return "redirect:/login";
         }
-// Kiểm tra xem có các ID sản phẩm được chọn hay không
         if (items != null && !items.isEmpty()) {
-            // Chuyển đổi các ID từ chuỗi thành danh sách Integer
-            List<Integer> idList = Arrays.stream(items.split(",")) // Tách chuỗi và chuyển thành Stream
-                    .map(Integer::parseInt) // Chuyển đổi từng ID từ String sang Integer
-                    .collect(Collectors.toList()); // Lưu vào danh sách
-
-            List<ShoppingCart> selectedItems = shoppingCartService.findByIds(idList);
-            List<Product> products = selectedItems.stream()
-                    .map(item -> productService.findById(item.getProductId()))
+            List<Integer> idList = Arrays.stream(items.split(","))
+                    .map(Integer::parseInt)
                     .collect(Collectors.toList());
-
-            BigDecimal totalAmount = shoppingCartService.calculateTotalAmount(selectedItems);
-
-            // Cập nhật các thuộc tính cho model
+            List<ShoppingCart> selectedItems = shoppingCartService.findByIds(idList);
+            List<Product> products = shoppingCartService.getProductsFromCartItems(selectedItems);
+            BigDecimal totalAmount = shoppingCartService.calculateTotalAmountFromCart(selectedItems);
             model.addAttribute("products", products);
             model.addAttribute("selectedItems", selectedItems);
             model.addAttribute("totalAmount", totalAmount);
+            model.addAttribute("userId", u.getUserId());
         } else {
             model.addAttribute("message", "No items selected for checkout.");
         }
-        return "user/shopping_cart"; // Đến trang thanh toán
+        return "user/shopping_cart";
     }
 }

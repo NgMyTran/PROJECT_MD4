@@ -1,11 +1,3 @@
-<!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org"
->
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
 <!-- sidebar.html -->
 <nav id="sidebar" class="sidebar js-sidebar">
     <div class="sidebar-content js-simplebar">
@@ -14,13 +6,30 @@
         </a>
         <ul class="sidebar-nav">
             <li class="sidebar-header">Pages</li>
-            <li class="sidebar-item"><a class="sidebar-link" href="/admin"><i class="align-middle" data-feather="grid"></i> <span class="align-middle">Dashboard</span></a></li>
-            <li class="sidebar-item" th:classappend="${page == 'category'} ? 'active'"><a class="sidebar-link" href="/admin/category"><i class="align-middle" data-feather="grid"></i> <span class="align-middle">Category</span></a></li>
-            <li class="sidebar-item" th:classappend="${page == 'product'} ? 'active'"><a class="sidebar-link" href="/admin/product"><i class="align-middle" data-feather="square"></i> <span class="align-middle">Product</span></a></li>
-            <li class="sidebar-item" th:classappend="${page == 'user'} ? 'active'"><a class="sidebar-link" href="/admin/user"><i class="align-middle" data-feather="user"></i> <span class="align-middle">User</span></a></li>
+            <li class="sidebar-item">
+                <a class="sidebar-link" href="/admin">
+                    <i class="align-middle" data-feather="grid"></i>
+                    <span class="align-middle">Dashboard</span>
+                </a>
+            </li>
+            <li class="sidebar-item" th:classappend="${activePage == 'category'} ? 'active' : ''">
+                <a class="sidebar-link" href="/admin/category">
+                    <i class="align-middle" data-feather="grid"></i>
+                    <span class="align-middle">Category</span>
+                </a>
+            </li>
+            <li class="sidebar-item" th:classappend="${activePage == 'product'} ? 'active' : ''">
+                <a class="sidebar-link" href="/admin/product">
+                    <i class="align-middle" data-feather="square"></i>
+                    <span class="align-middle">Product</span>
+                </a>
+            </li>
+            <li class="sidebar-item" th:classappend="${activePage == 'user'} ? 'active' : ''">
+                <a class="sidebar-link" href="/admin/user">
+                    <i class="align-middle" data-feather="user"></i>
+                    <span class="align-middle">User</span>
+                </a>
+            </li>
         </ul>
     </div>
 </nav>
-
-</body>
-</html>

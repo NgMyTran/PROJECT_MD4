@@ -21,10 +21,13 @@ public class CategoryController {
     private IProductService productService;
 
     @GetMapping
-    public String listCategory(Model model) {
+    public String listCategory(Model model, @RequestParam(defaultValue = "") String keyword) {
         model.addAttribute("categories", categoryService.findAll());
+        model.addAttribute("keyword", keyword);
+        model.addAttribute("categories", categoryService.getListCategories(keyword));
         return "/admin/category/list-category";
     }
+
     @GetMapping("/add")
     public String addCategoryForm() {
         return "/admin/category/add-category";

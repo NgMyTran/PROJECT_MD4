@@ -11,5 +11,5 @@ public interface IShoppingCartDao extends IGenericDao<ShoppingCart, Integer> {
     List<ShoppingCart> findByUserId(Long userLoginId);
     ShoppingCart findByUserIdAndProductId(Long userId, Long productId);
     List<ShoppingCart> findByIds(List<Integer> ids);
-
+    void deleteItemsByUserIdAndProductIds(Long userId, List<Long> productIds);
 }

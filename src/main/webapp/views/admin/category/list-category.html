@@ -1,31 +1,6 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-<head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="Responsive Admin &amp; Dashboard Template based on Bootstrap 5">
-    <meta name="author" content="AdminKit">
-    <meta name="keywords"
-          content="adminkit, bootstrap, bootstrap 5, admin, dashboard, template, responsive, css, sass, html, theme, front-end, ui kit, web">
-
-    <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link rel="shortcut icon" href="img/icons/icon-48x48.png"/>
-    <link rel="canonical" href="https://demo-basic.adminkit.io/"/>
-
-    <title>User &amp; Category Management</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet"
-          integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
-
-    <link th:href="@{/css/app.css}" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
-    <script>
-        function confirmDelete() {
-            return confirm("Category này hiện đang có sản phẩm. Bạn có chắc chắn muốn chuyển trạng thái của nó và các sản phẩm thuộc nó không?");
-        }
-    </script>
-</head>
-
+<head th:replace="layout/admin/head.html"></head>
 <body>
 <main class="wrapper">
     <nav id="sidebar" class="sidebar js-sidebar">
@@ -52,15 +27,7 @@
     </nav>
 
     <main class="main">
-        <nav class="navbar navbar-expand navbar-light navbar-bg">
-            <a class="sidebar-toggle js-sidebar-toggle mx-2"><i class="hamburger align-self-center"></i></a>
-            <div class="navbar-collapse collapse">
-                <ul class="navbar-nav navbar-align">
-                    <!-- Your existing navbar items -->
-                </ul>
-            </div>
-        </nav>
-
+        <div th:replace="layout/admin/navbar.html"></div>
         <main class="content">
             <div class="container-fluid p-0">
                 <!-- User Management Section -->
@@ -68,15 +35,15 @@
                     <div class="card-header">
                         <h3 class="card-title">Danh sách Category</h3>
                         <a href="/admin/category/add" class="btn btn-success">+ ADD NEW</a>
-                        <!--                        <nav class="navbar navbar-expand-lg bg-light">-->
-                        <!--                            <div class="container-fluid">-->
-                        <!--                                <form class="d-flex" role="search" th:action="@{/admin/user}" method="get">-->
-                        <!--                                    <input class="form-control me-2 fst-italic" type="search" name="keyword"-->
-                        <!--                                           th:value="${keyword}" placeholder="Enter user's name... " aria-label="Search">-->
-                        <!--                                    <button class="btn btn-outline-success" type="submit">Search</button>-->
-                        <!--                                </form>-->
-                        <!--                            </div>-->
-                        <!--                        </nav>-->
+                                                <nav class="navbar navbar-expand-lg bg-light">
+                                                    <div class="container-fluid">
+                                                        <form class="d-flex" role="search" th:action="@{/admin/category}" method="get">
+                                                            <input class="form-control me-2 fst-italic" type="search" name="keyword"
+                                                                   th:value="${keyword}" placeholder="Enter user's name... " aria-label="Search">
+                                                            <button class="btn btn-outline-success" type="submit">Search</button>
+                                                        </form>
+                                                    </div>
+                                                </nav>
                     </div>
                     <div class="card-body">
                         <table id="example1" class="table table-bordered table-striped text-center">
@@ -92,12 +59,13 @@
                             <tr th:each="c, loop : ${categories}"  th:style="${!c.status} ? 'text-decoration: line-through; color: red;' : ''">
                                 <td th:text="${loop.index + 1}"></td>
                                 <td th:text="${c.name}"></td>
+                                <td th:text="${c.description}"></td>
                                 <td th:text="${c.status} ? 'Active' : 'Inactive'"></td>
                                 <td>
                                     <form th:action="|/admin/category/edit/${c.id}|" method="get" style="display:inline;">
                                         <button type="submit" class="btn btn-primary">Edit</button>
                                     </form>
-                                    <span th:if="${!c.status}"> (Cannot edit)</span>
+<!--                                    <span th:if="${!c.status}"> (Cannot edit)</span>-->
                                     <form th:action="|/admin/category/delete/${c.id}|" method="post" style="display:inline;">
                                         <input type="hidden" name="confirm" value="true">
                                         <input type="hidden" name="_method" value="delete">
@@ -109,32 +77,6 @@
                         </table>
                     </div>
                 </div>
-
-<!--                <footer class="footer">-->
-<!--                    <div class="container-fluid">-->
-<!--                        <div class="row text-muted">-->
-<!--                            <div class="col-6 text-start">-->
-<!--                                <p class="mb-0">-->
-<!--                                    <a class="text-muted" href="" target="_blank"><strong>DemoAdminKit</strong></a>-->
-<!--                                    - <a class="text-muted" href="" target="_blank"><strong>Bootstrap Admin-->
-<!--                                    Template</strong></a> &copy;-->
-<!--                                </p>-->
-<!--                            </div>-->
-<!--                            <div class="col-6 text-end">-->
-<!--                                <ul class="list-inline">-->
-<!--                                    <li class="list-inline-item"><a class="text-muted" href="#"-->
-<!--                                                                    target="_blank">Support</a></li>-->
-<!--                                    <li class="list-inline-item"><a class="text-muted" href="#" target="_blank">Help-->
-<!--                                        Center</a></li>-->
-<!--                                    <li class="list-inline-item"><a class="text-muted" href="#"-->
-<!--                                                                    target="_blank">Privacy</a></li>-->
-<!--                                    <li class="list-inline-item"><a class="text-muted" href="#"-->
-<!--                                                                    target="_blank">Terms</a></li>-->
-<!--                                </ul>-->
-<!--                            </div>-->
-<!--                        </div>-->
-<!--                    </div>-->
-<!--                </footer>-->
                     <footer th:replace="layout/admin/foot.html"></footer>
             </div>
         </main>

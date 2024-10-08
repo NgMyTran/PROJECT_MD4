@@ -22,6 +22,10 @@
         <input type="text" th:value="${category.name}" name="name" id="name" required>
     </div>
     <div>
+        <label for="description">Category's Description:</label>
+        <input type="text" th:value="${category.description}" name="description" id="description" required>
+    </div>
+    <div>
         <label>Status:</label>
         <div>
             <input type="radio" name="status" id="active" value="true" th:checked="${category.status}"/>

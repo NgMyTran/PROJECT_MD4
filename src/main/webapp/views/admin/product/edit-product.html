@@ -23,7 +23,9 @@
     </div>
     <div>
         <label for="image">Image:</label>
-        <input type="file" name="imageFile" id="image">
+        <img style="width: 200px; height: 200px" th:src="${product.image}" alt="product image">
+        <img id="imagePreview" style="width: 200px; height: 200px; display: none;" alt="image preview">
+        <input type="file" name="imageFile" id="image" accept="image/*" onchange="previewImage(this)">
         <p>Keep current image: <input type="checkbox" name="keepCurrentImage" value="true"></p>
     </div>
     <div>
@@ -49,5 +51,22 @@
     </div>
     <input type="submit" value="Update Product">
 </form>
+<script>
+    function previewImage(input) {
+        const imagePreview = document.getElementById('imagePreview');
+        const file = input.files[0];
+
+        if (file) {
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                imagePreview.src = e.target.result; // Cập nhật src img
+                imagePreview.style.display = 'block'; // Hiển thị preview
+            }
+            reader.readAsDataURL(file); // Chuyển file thành URL của img
+        } else {
+            imagePreview.style.display = 'none'; // Ẩn nếu không có tệp tin
+        }
+    }
+</script>
 </body>
 </html>
