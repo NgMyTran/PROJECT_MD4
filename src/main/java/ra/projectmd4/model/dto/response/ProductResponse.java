@@ -17,6 +17,7 @@ public class ProductResponse {
     private String productName;
     private BigDecimal price;
     private int stock;
+    private boolean status;
     private String categoryName;
 
     public ProductResponse(Product product) {
@@ -24,6 +25,20 @@ public class ProductResponse {
         this.productName = product.getProductName();
         this.price = product.getPrice();
         this.stock = product.getStock();
+        this.status= product.isStatus();
         this.categoryName = product.getCategory().getName();
     }
+
+    @Override
+    public String toString() {
+        return "ProductResponse{" +
+                "productId=" + productId +
+                ", productName='" + productName + '\'' +
+                ", price=" + price +
+                ", stock=" + stock +
+                ", status=" + status +
+                ", categoryName='" + categoryName + '\'' +
+                '}';
+    }
+
 }

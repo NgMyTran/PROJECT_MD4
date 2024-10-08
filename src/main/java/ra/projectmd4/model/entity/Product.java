@@ -58,6 +58,9 @@ public class Product {
     @Column(name = "updated_at", columnDefinition = "timestamp")
     private Timestamp updatedAt;
 
+    @Column(columnDefinition = "boolean default true")
+    private boolean status;
+
     public void update() {
         this.updatedAt = Timestamp.valueOf(LocalDateTime.now());
     }

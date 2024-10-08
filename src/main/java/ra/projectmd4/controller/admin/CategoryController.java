@@ -51,7 +51,7 @@ public class CategoryController {
 
     @PostMapping("/delete/{id}")
     public String deleteCategory(@PathVariable Long id, @RequestParam boolean confirm) {
-        categoryService.deleteCategoryConfirm(id, true);
+        categoryService.deleteCategoryConfirm(id, confirm);
         return "redirect:/admin/category";
     }
 

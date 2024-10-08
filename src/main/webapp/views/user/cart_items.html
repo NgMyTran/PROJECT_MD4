@@ -1,101 +1,9 @@
-<!--<!DOCTYPE html>-->
-<!--<html lang="en">-->
-<!--<head>-->
-<!--    <meta charset="UTF-8">-->
-<!--    <meta name="viewport" content="width=device-width, initial-scale=1.0">-->
-<!--    <title> (cart_items.html)</title>-->
-<!--    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">-->
-<!--</head>-->
-<!--<body>-->
-<!--<div th:replace="/layout/user/head.html"></div>-->
-<!--<main>-->
-<!--    <nav class="navbar navbar-expand-lg navbar-light">-->
-<!--    </nav>-->
-<!--    <div class="container mt-5">-->
-<!--        <h2 style="text-align: center">Cart Items</h2>-->
-<!--        <div th:if="${isCartEmpty}" class="alert alert-warning">-->
-<!--            Your cart is empty.-->
-<!--        </div>-->
-
-<!--        <table class="table">-->
-<!--            <thead>-->
-<!--            <tr>-->
-<!--                <th>Product Name</th>-->
-<!--                <th>Image</th>-->
-<!--                <th>Price</th>-->
-<!--                <th>Quantity</th>-->
-<!--                <th>Select</th>-->
-<!--                &lt;!&ndash;            <th>Select</th>&ndash;&gt;-->
-<!--            </tr>-->
-<!--            </thead>-->
-<!--            <tbody>-->
-<!--            <div>-->
-<!--                <h4 th:if="${message}" th:text="${message}"></h4>-->
-<!--            </div>-->
-<!--            <tr th:each="item, iterStat : ${cartItems}">-->
-<!--                <td th:text="${item.product.productName}"></td>-->
-<!--                <td>-->
-<!--                    <img th:src="${item.product.image}" alt="Product image"-->
-<!--                         style="width: 100px; height: auto;"/>-->
-<!--                </td>-->
-<!--                <td th:text="${item.product.price}"></td>-->
-<!--                <td>-->
-<!--                    <form th:action="@{/user/cart/update/{id}(id=${item.shoppingCartId})}" method="post">-->
-<!--                        <input style="width: 40px" type="number" name="orderQuantity" th:value="${item.orderQuantity}"-->
-<!--                               min="1" required/>-->
-<!--                        <button type="submit" class="btn btn-primary">Update</button>-->
-<!--                    </form>-->
-<!--                    <form th:action="@{/user/cart/delete/{id}(id=${item.shoppingCartId})}" method="post">-->
-<!--                        <button type="submit" class="btn btn-danger">Remove</button>-->
-<!--                    </form>-->
-<!--                </td>-->
-<!--                <td>-->
-<!--                    <form onsubmit="checkoutSelected(); return false;">-->
-<!--                        <input type="checkbox" name="selectedItems" th:value="${item.shoppingCartId}"/>-->
-<!--                    </form>-->
-<!--                </td>-->
-<!--            </tr>-->
-<!--            </tbody>-->
-<!--        </table>-->
-<!--        <div th:unless="${isCartEmpty}">-->
-<!--            <h4 style="color: #4cb74c">Total Amount: <span style="margin-left: 24pc" th:text="${formattedTotal}"></span>-->
-<!--            </h4>-->
-<!--        </div>-->
-<!--        &lt;!&ndash;    <a th:unless="${isCartEmpty}" href="/user/cart/shopping-cart" class="btn btn-success" onclick="checkoutSelected()">Proceed to Checkout</a>&ndash;&gt;-->
-<!--        <button th:unless="${isCartEmpty}" class="btn btn-success" onclick="checkoutSelected()" type="reset">Proceed to-->
-<!--            Checkout-->
-<!--        </button>-->
-<!--        <a href="/" class="btn btn-secondary mt-3" style="margin-bottom: 15px">Back to Home</a>-->
-<!--    </div>-->
-<!--</main>-->
-
-<!--<footer th:replace="/layout/user/foot.html"></footer>-->
-
-
-<!--<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>-->
-<!--<script>-->
-<!--    function checkoutSelected() {-->
-<!--        var selectedItems = [];-->
-<!--        var checkboxes = document.querySelectorAll('input[name="selectedItems"]:checked');-->
-<!--        checkboxes.forEach(function (checkbox) {-->
-<!--            selectedItems.push(checkbox.value);-->
-<!--        });-->
-<!--        if (selectedItems.length > 0) {-->
-<!--            window.location.href = "/user/cart/checkout?items=" + encodeURIComponent(selectedItems.join(','));-->
-<!--        } else {-->
-<!--            alert("Please select at least one item to proceed with checkout.");-->
-<!--        }-->
-<!--    }-->
-<!--</script>-->
-<!--</body>-->
-<!--</html>-->
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>(cart_items.html)</title>
+    <title> (cart_items.html)</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body>
@@ -109,78 +17,170 @@
             Your cart is empty.
         </div>
 
-        <form id="checkoutForm" action="/user/cart/shopping-cart" method="post">
-            <table class="table">
-                <thead>
-                <tr>
-                    <th>Product Name</th>
-                    <th>Image</th>
-                    <th>Price</th>
-                    <th>Quantity</th>
-                    <th>Select</th>
-                </tr>
-                </thead>
-                <tbody>
-                <div>
-                    <h4 th:if="${message}" th:text="${message}"></h4>
-                </div>
-                <tr th:each="item, iterStat : ${cartItems}">
-                    <td th:text="${item.product.productName}"></td>
-                    <td>
-                        <img th:src="${item.product.image}" alt="Product image"
-                             style="width: 100px; height: auto;"/>
-                    </td>
-                    <td th:text="${item.product.price}"></td>
-                    <td>
-                        <form th:action="@{/user/cart/update/{id}(id=${item.shoppingCartId})}" method="post">
-                            <input style="width: 40px" type="number" name="orderQuantity" th:value="${item.orderQuantity}"
-                                   min="1" required/>
-                            <button type="submit" class="btn btn-primary">Update</button>
-                        </form>
-                        <form th:action="@{/user/cart/delete/{id}(id=${item.shoppingCartId})}" method="post">
-                            <button type="submit" class="btn btn-danger">Remove</button>
-                        </form>
-                    </td>
-                    <td>
-                        <input type="checkbox" name="selectedItems" th:value="${item.shoppingCartId}"/>
-                    </td>
-                </tr>
-                </tbody>
-            </table>
-
-            <div th:unless="${isCartEmpty}">
-                <h4 style="color: #4cb74c">Total Amount: <span style="margin-left: 24pc" th:text="${formattedTotal}"></span>
-                </h4>
+        <table class="table">
+            <thead>
+            <tr>
+                <th>Product Name</th>
+                <th>Image</th>
+                <th>Price</th>
+                <th>Quantity</th>
+                <th>Select</th>
+                <!--            <th>Select</th>-->
+            </tr>
+            </thead>
+            <tbody>
+            <div>
+                <h4 th:if="${message}" th:text="${message}"></h4>
             </div>
-            <button th:unless="${isCartEmpty}" class="btn btn-success" type="submit">Proceed to Checkout</button>
-            <a href="/" class="btn btn-secondary mt-3" style="margin-bottom: 15px">Back to Home</a>
-        </form>
+            <tr th:each="item, iterStat : ${cartItems}">
+                <td th:text="${item.product.productName}"></td>
+                <td>
+                    <img th:src="${item.product.image}" alt="Product image"
+                         style="width: 100px; height: auto;"/>
+                </td>
+                <td th:text="${item.product.price}"></td>
+                <td>
+                    <form th:action="@{/user/cart/update/{id}(id=${item.shoppingCartId})}" method="post">
+                        <input style="width: 40px" type="number" name="orderQuantity" th:value="${item.orderQuantity}"
+                               min="1" required/>
+                        <button type="submit" class="btn btn-primary">Update</button>
+                    </form>
+                    <form th:action="@{/user/cart/delete/{id}(id=${item.shoppingCartId})}" method="post">
+                        <button type="submit" class="btn btn-danger">Remove</button>
+                    </form>
+                </td>
+                <td>
+                    <form onsubmit="checkoutSelected(); return false;">
+                        <input type="checkbox" name="selectedItems" th:value="${item.shoppingCartId}"/>
+                    </form>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+        <div th:unless="${isCartEmpty}">
+            <h4 style="color: #4cb74c">Total Amount: <span style="margin-left: 24pc" th:text="${formattedTotal}"></span>
+            </h4>
+        </div>
+        <!--    <a th:unless="${isCartEmpty}" href="/user/cart/shopping-cart" class="btn btn-success" onclick="checkoutSelected()">Proceed to Checkout</a>-->
+        <button th:unless="${isCartEmpty}" class="btn btn-success" onclick="checkoutSelected()" type="reset">Proceed to
+            Checkout
+        </button>
+        <a href="/" class="btn btn-secondary mt-3" style="margin-bottom: 15px">Back to Home</a>
     </div>
 </main>
 
 <footer th:replace="/layout/user/foot.html"></footer>
 
+
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
 <script>
-    document.getElementById('checkoutForm').onsubmit = function() {
+    function checkoutSelected() {
         var selectedItems = [];
         var checkboxes = document.querySelectorAll('input[name="selectedItems"]:checked');
         checkboxes.forEach(function (checkbox) {
             selectedItems.push(checkbox.value);
         });
         if (selectedItems.length > 0) {
-            // Tạo một trường hidden để gửi selectedItems
-            var hiddenInput = document.createElement('input');
-            hiddenInput.type = 'hidden';
-            hiddenInput.name = 'items';
-            hiddenInput.value = selectedItems.join(',');
-            this.appendChild(hiddenInput);
-            return true; // Gửi form
+            window.location.href = "/user/cart/checkout?items=" + encodeURIComponent(selectedItems.join(','));
         } else {
             alert("Please select at least one item to proceed with checkout.");
-            return false; // Ngăn gửi form
         }
-    };
+    }
 </script>
 </body>
 </html>
+
+<!--<!DOCTYPE html>-->
+<!--<html lang="en">-->
+<!--<head>-->
+<!--    <meta charset="UTF-8">-->
+<!--    <meta name="viewport" content="width=device-width, initial-scale=1.0">-->
+<!--    <title>(cart_items.html)</title>-->
+<!--    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">-->
+<!--</head>-->
+<!--<body>-->
+<!--<div th:replace="/layout/user/head.html"></div>-->
+<!--<main>-->
+<!--    <nav class="navbar navbar-expand-lg navbar-light">-->
+<!--    </nav>-->
+<!--    <div class="container mt-5">-->
+<!--        <h2 style="text-align: center">Cart Items</h2>-->
+<!--        <div th:if="${isCartEmpty}" class="alert alert-warning">-->
+<!--            Your cart is empty.-->
+<!--        </div>-->
+
+<!--        <form id="checkoutForm" action="/user/cart/shopping-cart" method="post">-->
+<!--            <table class="table">-->
+<!--                <thead>-->
+<!--                <tr>-->
+<!--                    <th>Product Name</th>-->
+<!--                    <th>Image</th>-->
+<!--                    <th>Price</th>-->
+<!--                    <th>Quantity</th>-->
+<!--                    <th>Select</th>-->
+<!--                </tr>-->
+<!--                </thead>-->
+<!--                <tbody>-->
+<!--                <div>-->
+<!--                    <h4 th:if="${message}" th:text="${message}"></h4>-->
+<!--                </div>-->
+<!--                <tr th:each="item, iterStat : ${cartItems}">-->
+<!--                    <td th:text="${item.product.productName}"></td>-->
+<!--                    <td>-->
+<!--                        <img th:src="${item.product.image}" alt="Product image"-->
+<!--                             style="width: 100px; height: auto;"/>-->
+<!--                    </td>-->
+<!--                    <td th:text="${item.product.price}"></td>-->
+<!--                    <td>-->
+<!--                        <form th:action="@{/user/cart/update/{id}(id=${item.shoppingCartId})}" method="post">-->
+<!--                            <input style="width: 40px" type="number" name="orderQuantity" th:value="${item.orderQuantity}"-->
+<!--                                   min="1" required/>-->
+<!--                            <button type="submit" class="btn btn-primary">Update</button>-->
+<!--                        </form>-->
+<!--                        <form th:action="@{/user/cart/delete/{id}(id=${item.shoppingCartId})}" method="post">-->
+<!--                            <button type="submit" class="btn btn-danger">Remove</button>-->
+<!--                        </form>-->
+<!--                    </td>-->
+<!--                    <td>-->
+<!--                        <input type="checkbox" name="selectedItems" th:value="${item.shoppingCartId}"/>-->
+<!--                    </td>-->
+<!--                </tr>-->
+<!--                </tbody>-->
+<!--            </table>-->
+
+<!--            <div th:unless="${isCartEmpty}">-->
+<!--                <h4 style="color: #4cb74c">Total Amount: <span style="margin-left: 24pc" th:text="${formattedTotal}"></span>-->
+<!--                </h4>-->
+<!--            </div>-->
+<!--            <button th:unless="${isCartEmpty}" class="btn btn-success" type="submit">Proceed to Checkout</button>-->
+<!--            <a href="/" class="btn btn-secondary mt-3" style="margin-bottom: 15px">Back to Home</a>-->
+<!--        </form>-->
+<!--    </div>-->
+<!--</main>-->
+
+<!--<footer th:replace="/layout/user/foot.html"></footer>-->
+
+<!--<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>-->
+<!--<script>-->
+<!--    document.getElementById('checkoutForm').onsubmit = function() {-->
+<!--        var selectedItems = [];-->
+<!--        var checkboxes = document.querySelectorAll('input[name="selectedItems"]:checked');-->
+<!--        checkboxes.forEach(function (checkbox) {-->
+<!--            selectedItems.push(checkbox.value);-->
+<!--        });-->
+<!--        if (selectedItems.length > 0) {-->
+<!--            // Tạo một trường hidden để gửi selectedItems-->
+<!--            var hiddenInput = document.createElement('input');-->
+<!--            hiddenInput.type = 'hidden';-->
+<!--            hiddenInput.name = 'items';-->
+<!--            hiddenInput.value = selectedItems.join(',');-->
+<!--            this.appendChild(hiddenInput);-->
+<!--            return true; // Gửi form-->
+<!--        } else {-->
+<!--            alert("Please select at least one item to proceed with checkout.");-->
+<!--            return false; // Ngăn gửi form-->
+<!--        }-->
+<!--    };-->
+<!--</script>-->
+<!--</body>-->
+<!--</html>-->

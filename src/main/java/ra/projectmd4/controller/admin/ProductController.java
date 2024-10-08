@@ -168,11 +168,14 @@ public class ProductController {
     @GetMapping
     public String list(@RequestParam(defaultValue = "") String keyword,
                        @RequestParam(defaultValue = "0") int page,
-                       @RequestParam(defaultValue = "10") int size,
+                       @RequestParam(defaultValue = "4") int size,
                        Model model) {
         productService.getListProducts(keyword, page, size);
-        List<ProductResponse> products;
-        products = productService.getListProducts(keyword, page, size);
+        List<ProductResponse> products = productService.getListProducts(keyword, page, size);
+        System.out.println("Danh sách sản phẩm:");
+        for (ProductResponse product : products) {
+            System.out.println(product);
+        }
         long totalElements = keyword.isEmpty() ? productService.getTotalElements("") : productService.getTotalElements(keyword);
         long totalPages = totalElements > 0 ? (totalElements + size - 1) / size : 1;
 //        model.addAttribute("totalPages", (productService.getTotalElements(keyword) + size - 1) / size);

@@ -13,8 +13,7 @@ import ra.projectmd4.service.product.IProductService;
 import ra.projectmd4.service.shoppingcart.IShoppingCartService;
 
 import javax.servlet.http.HttpSession;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 import java.util.stream.Collectors;
 
 @Controller
@@ -30,26 +29,27 @@ public class HomeController {
     public String home(Model model, HttpSession session) {
         List<Category> categories = iCategoryService.findActiveCategories();
         List<Product> sellerProduct = new ArrayList<>();
-        // Duyệt qua từng danh mục và lấy sản phẩm
+
+        // Lấy sản phẩm theo danh mục và giới hạn
         for (Category category : categories) {
-            List<Product> products = iProductService.findActiveProductsByCategoryId(category.getId());
-            // Giới hạn số lượng sản phẩm hiển thị tối đa 2 cho mỗi danh mục
-            if (products.size() > 2) {
-                products = products.stream().limit(1).collect(Collectors.toList());
-            }
-            sellerProduct.addAll(products); // Thêm sản phẩm vào danh sách sellerProduct
+            List<Product> products = iProductService.findActiveProductsByCategoryId(category.getId())
+                    .stream()
+                    .filter(Product::isStatus) // Chỉ giữ lại sản phẩm có status = true
+                    .limit(2) // Giới hạn số lượng sản phẩm tối đa là 2
+                    .collect(Collectors.toList());
+            sellerProduct.addAll(products);
         }
+        Collections.shuffle(sellerProduct);
         UserInfo userInfo = (UserInfo) session.getAttribute("userLogin");
         int totalQuantity = 0;
         if (userInfo != null) {
             List<ShoppingCart> cartItems = iShoppingCartService.findByUserId(userInfo.getUserId());
             totalQuantity = cartItems.stream().mapToInt(ShoppingCart::getOrderQuantity).sum();
         }
-        model.addAttribute("sellerProduct", sellerProduct);
+        model.addAttribute("sellerProduct", sellerProduct); // Gửi danh sách sản phẩm
         model.addAttribute("totalQuantity", totalQuantity);
         return "/user/index";
     }
-
 
     @GetMapping("/admin")
     public String admin(){
@@ -60,11 +60,12 @@ public class HomeController {
 @GetMapping("/product-detail")
 public String productDetail(Model model, HttpSession session) {
     List<Category> categories = iCategoryService.findActiveCategories();
-    List<Product> products = new ArrayList<>();
-    for (Category category : categories) {
-        List<Product> categoryProducts = iProductService.findActiveProductsByCategoryId(category.getId());
-        products.addAll(categoryProducts);
-    }
+//    List<Product> products = new ArrayList<>();
+//    for (Category category : categories) {
+//        List<Product> categoryProducts = iProductService.findActiveProductsByCategoryId(category.getId());
+//        products.addAll(categoryProducts);
+//    }
+    List<Product> products = iProductService.findActiveProducts();
     UserInfo userInfo = (UserInfo) session.getAttribute("userLogin");
     int totalQuantity = 0;
     if (userInfo != null) {

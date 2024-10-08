@@ -3,6 +3,7 @@ package ra.projectmd4.dao.category;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import ra.projectmd4.model.entity.Category;
+import ra.projectmd4.model.entity.Product;
 import ra.projectmd4.service.product.IProductService;
 
 import javax.persistence.EntityManager;
@@ -54,10 +55,10 @@ private IProductService productService;
     public void delete(Long id) {
         Category cateDel = findById(id);
         if (cateDel != null) {
-//            List<Product> products = cateDel.getProducts();
-//            for (Product product : products) {
-//                productService.delete(product.getId());
-//            }
+            List<Product> products = cateDel.getProducts();
+            for (Product product : products) {
+                productService.delete(product.getId());
+            }
             cateDel.setStatus(false);
             entityManager.merge(cateDel);
         }

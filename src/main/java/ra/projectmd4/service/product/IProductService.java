@@ -17,4 +17,6 @@ public interface IProductService extends IGenericService<Product, Long> {
 //    List<ProductResponse> getListProducts(String key);
      long getTotalElements(String key);
      List<Product> findActiveProductsByCategoryId(Long categoryId);
+List<Product> findActiveProducts();
+
 }

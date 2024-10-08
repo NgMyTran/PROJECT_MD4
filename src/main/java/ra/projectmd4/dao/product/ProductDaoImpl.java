@@ -47,7 +47,11 @@ public class ProductDaoImpl implements IProductDao {
     @Override
     @Transactional
     public void delete(Long id) {
-        entityManager.remove(findById(id));
+        Product proDel = findById(id);
+        if (proDel != null) {
+            proDel.setStatus(false);
+            entityManager.merge(proDel);
+        }
     }
 
     @Override
@@ -81,6 +85,13 @@ public class ProductDaoImpl implements IProductDao {
     }
 
     @Override
+    public List<Product> findActiveProducts() {
+        TypedQuery<Product> type = entityManager.createQuery("FROM Product WHERE status = true", Product.class);
+        return type.getResultList();
+    }
+
+
+        @Override
     public List<Product> findActiveProductsByCategoryId(Long categoryId) {
         // Bước 1: Kiểm tra xem danh mục có trạng thái true không
         String categoryQuery = "SELECT c FROM Category c WHERE c.id = :categoryId AND c.status = true";

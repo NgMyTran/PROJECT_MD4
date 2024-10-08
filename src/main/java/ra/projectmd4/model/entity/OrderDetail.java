@@ -23,20 +23,17 @@ public class OrderDetail {
 
     @ManyToOne
     @JoinColumn(name = "order_id", nullable = false)
-    private Order order; // Khóa ngoại liên kết với đơn hàng
+    private Order order;
 
     @ManyToOne
     @JoinColumn(name = "product_id", nullable = false)
-    private Product product; // Khóa ngoại liên kết với sản phẩm
-
+    private Product product;
     @Column(name = "name", nullable = false)
-    private String name; // Tên sản phẩm
+    private String name;
 
     @Column(name = "unit_price", nullable = false, precision = 10, scale = 2)
-    private BigDecimal unitPrice; // Đơn giá
+    private BigDecimal unitPrice;
 
     @Column(name = "order_quantity", nullable = false)
-    private int orderQuantity; // Số lượng đặt hàng
-
-    // Phương thức hỗ trợ có thể thêm ở đây, nếu cần
+    private int orderQuantity;
 }
